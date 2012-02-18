@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/css" />
+
+  <script type="text/javascript">
+    setTimeout(function() {
+      location.reload(true);
+    }, 10000);
+  </script>
+</head>
+
+<body onload="refresh();">
+  <div>
+    <h1>Dashboard</h1>
+    <span style="position: absolute; top: 4px; right: 4px;">(as of <%= time Time.now.to_i %>)</span>
+  </div>
+  
+  <%= yield %>
+</body>
+</html>

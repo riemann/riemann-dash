@@ -1,0 +1,7 @@
+pkg/
+._*
+.sass-cache/
+*~
+.DS_Store
+.*.swp
+*.log

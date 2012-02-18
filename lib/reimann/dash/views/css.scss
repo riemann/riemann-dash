@@ -1,0 +1,39 @@
+html,table {
+  font-family: Helvetica Nueue, Helvetica, sans;
+  font-size: 8pt;
+}
+h1 {
+  margin-bottom: 0.2em;
+}
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.1em;
+}
+
+.box {
+  float: left;
+  margin: 4px;
+}
+
+.ok {
+  background: #B8F1BC;
+}
+.warning {
+  background: #F7D18E;
+}
+.critical {
+  background: #FF3C43;
+}
+
+.chart {
+  width: 140px;
+  border: 1px solid #ccc;
+}
+.chart td {
+  min-width: 40px;
+  overflow: hidden;
+}
+.chart th {
+  width: 1px;
+  text-align: left;
+}
