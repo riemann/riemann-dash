@@ -1,50 +1,51 @@
-Installing
+Reimann-Dash
+============
+
+An extensible Sinatra dashboard for Reimann. Connects to Reimann over the
+network and shows events matching the queries you configure.
+
+Get started
 ==========
 
-    gem install reimann-client
-
-Use
-===
-
-``` ruby
-require 'reimann/client'
-
-# Create a client. Host and port are optional.
-c = Reimann::Client.new host: 'localhost', port: 5555
-
-# Send a simple event
-c << {service: 'testing', metric: 2.5}
-
-# Or a more complex one
-c << {
-  host: 'web3',
-  service: 'api latency',
-  state: 'warn',
-  metric: 63.5
-  description: "63.5 milliseconds per request"
-  time: Time.now.to_i - 10
-}
-
-# :host defaults to gethostname(). :time defaults to current unix time. You
-# can explicitly override host...
-
-c << {host: nil, service: 'the cloud', state: 'nebulous'}
-
-# Get all the states from the server
-c['true']
-
-# Or specific states matching a query
-c['host =~ "%.dc1" and (state = "critical" or state = "warning")']
-
+``` bash
+gem install reimann-dash
+reimann-dash
 ```
 
-Client state management
-=======================
+Reimann-dash will connect to a local Reimann server on port 5555, and display a
+basic dashboard of all events in that server's index.
 
-Reimann::Client provides some classes to make managing state updates easier.
+Configuring
+===========
 
-Reimann::MetricThread starts a thread to poll a metric periodically, which can
-be used to flush an accumulated value to ustate at regular intervals.
+Reimann-dash takes an optional config file, which you can specify as the first
+command-line argument. If none is given, it looks for a file in the local
+directory: config.rb. That file can override any configuration options on the
+Dash class (hence all Sinatra configuration) as well as the Reimann client
+options, etc.
 
-Reimann::AutoState bundles a state and a client together. Any changes to the
-AutoState automatically send the new state to the client.
+``` ruby
+set :port, 6000 # HTTP server on port 6000
+config[:client][:host] = 'my.ustate.server'
+```
+
+You'll probably want a more specific dashboard:
+
+``` ruby
+config[:view] = 'my/custom/view'
+```
+
+Then you can write your own index.erb (and other views too, if you like). I've
+provided an default stylesheet, layout, and dashboard in
+lib/reimann/dash/views--as well as an extensive set of functions for laying out
+events from a given query: see lib/reimann/dash/helper/renderer.rb.
+
+A long history with cacti, nagios, and the like has convinced me that a.) web
+configuration of dashboards is inevitably slower than just writing the code and
+b.) you're almost certainly going to want to need more functions than I can
+give you. My goal is to give you the tools to make it easier and get out of
+your way.
+
+An example config.rb, additional controllers, views, and public directory are
+all in doc/dash. Should give you ideas for extending the dashboard for your own
+needs.
