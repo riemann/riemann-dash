@@ -1,4 +1,4 @@
-class UState::Dash
+class Reimann::Dash
   PARAMS = [
     'target',
     'height',
