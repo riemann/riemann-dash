@@ -71,21 +71,30 @@ module Reimann
         when Integer
           x.to_s
         else
-          '?'
+          s.state || '?'
         end
 
         # Size
-        size = begin
-          (x || 0) * 100 / opts[:max]
-        rescue ZeroDivisionError
-          0
-        end
+        size = case x
+               when 0
+                 0
+               when nil
+                 100
+               else
+                 begin
+                   x * 100 / opts[:max]
+                 rescue ZeroDivisionError
+                   0
+                 end
+               end
         size = "%.2f" % size
+
+        time = Time.at(s.time).strftime(Dash.config[:strftime])
 
         tag opts[:tag], h(text), 
           :class => "state #{s.state}", 
           style: "opacity: #{age_fraction s.time}; width: #{size}%", 
-          title: s.description
+          title: "#{s.state}\n#{s.description}\n\n(at #{time})"
       end
 
       # Renders a set of states in a chart. Each row is a given host, each
