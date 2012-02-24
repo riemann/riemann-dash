@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib')))
-require 'reimann/dash'
+require 'riemann/dash'
 
-Reimann::Dash.load ARGV.first 
-Reimann::Dash.run!
+Riemann::Dash.load ARGV.first 
+Riemann::Dash.run!

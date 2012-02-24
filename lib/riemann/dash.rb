@@ -1,7 +1,7 @@
-require 'reimann/client'
+require 'riemann/client'
 require 'sinatra/base'
 
-module Reimann
+module Riemann
   class Dash < Sinatra::Base
     # A little dashboard sinatra application.
     
@@ -27,7 +27,7 @@ module Reimann
     end
 
     def self.client
-      @client ||= Reimann::Client.new(config[:client])
+      @client ||= Riemann::Client.new(config[:client])
     end
 
     def self.load(filename)
@@ -111,8 +111,8 @@ module Reimann
 
     # Add an additional public directory.
     def self.public_dir(dir)
-      require 'reimann/dash/rack/static'
-      use Reimann::Dash::Static, :root => dir
+      require 'riemann/dash/rack/static'
+      use Riemann::Dash::Static, :root => dir
     end
 
     def client

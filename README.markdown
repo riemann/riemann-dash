@@ -1,27 +1,27 @@
-Reimann-Dash
+Riemann-Dash
 ============
 
-An extensible Sinatra dashboard for Reimann. Connects to Reimann over the
+An extensible Sinatra dashboard for Riemann. Connects to Riemann over the
 network and shows events matching the queries you configure.
 
 Get started
 ==========
 
 ``` bash
-gem install reimann-dash
-reimann-dash
+gem install riemann-dash
+riemann-dash
 ```
 
-Reimann-dash will connect to a local Reimann server on port 5555, and display a
+Riemann-dash will connect to a local Riemann server on port 5555, and display a
 basic dashboard of all events in that server's index.
 
 Configuring
 ===========
 
-Reimann-dash takes an optional config file, which you can specify as the first
+Riemann-dash takes an optional config file, which you can specify as the first
 command-line argument. If none is given, it looks for a file in the local
 directory: config.rb. That file can override any configuration options on the
-Dash class (hence all Sinatra configuration) as well as the Reimann client
+Dash class (hence all Sinatra configuration) as well as the Riemann client
 options, etc.
 
 ``` ruby
@@ -37,8 +37,8 @@ config[:view] = 'my/custom/view'
 
 Then you can write your own index.erb (and other views too, if you like). I've
 provided an default stylesheet, layout, and dashboard in
-lib/reimann/dash/views--as well as an extensive set of functions for laying out
-events from a given query: see lib/reimann/dash/helper/renderer.rb.
+lib/riemann/dash/views--as well as an extensive set of functions for laying out
+events from a given query: see lib/riemann/dash/helper/renderer.rb.
 
 A long history with cacti, nagios, and the like has convinced me that a.) web
 configuration of dashboards is inevitably slower than just writing the code and

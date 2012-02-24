@@ -1,4 +1,4 @@
-class Reimann::Dash::Static
+class Riemann::Dash::Static
   def initialize(app, options = {})
     @app = app
     @root = options[:root] or raise ArgumentError, "no root"

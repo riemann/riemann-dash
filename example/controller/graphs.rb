@@ -1,4 +1,4 @@
-class Reimann::Dash
+class Riemann::Dash
   PARAMS = [
     'target',
     'height',

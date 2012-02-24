@@ -1,4 +1,4 @@
-module Reimann
+module Riemann
   class Dash
     helpers do
       include ::Rack::Utils
