@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'riemann/client'
 require 'sinatra/base'
 
@@ -12,17 +13,17 @@ module Riemann
     
     def self.config
       @config ||= {
-        client: {},
-        age_scale: 60 * 30,
-        state_order: {
+        :client =>  {},
+        :age_scale => 60 * 30,
+        :state_order => {
           'critical' => 3,
           'warning' => 2,
           'ok' => 1
         },
-        strftime: '%H:%M:%S',
-        controllers: [File.join(File.dirname(__FILE__), 'dash', 'controller')],
-        helpers: [File.join(File.dirname(__FILE__), 'dash', 'helper')],
-        views: File.join(File.dirname(__FILE__), 'dash', 'views')
+        :strftime => '%H:%M:%S',
+        :controllers => [File.join(File.dirname(__FILE__), 'dash', 'controller')],
+        :helpers => [File.join(File.dirname(__FILE__), 'dash', 'helper')],
+        :views => File.join(File.dirname(__FILE__), 'dash', 'views')
       }
     end
 

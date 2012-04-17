@@ -47,7 +47,7 @@ module Riemann
         table(
           *Event.partition(states, :host).map do |host, states|
             tr(
-              th(host, class: 'host'),
+              th(host, :class => 'host'),
               *Event.sort(states, :service).map do |state|
                 state_short state
               end
@@ -59,7 +59,7 @@ module Riemann
       # Renders a state as the given HTML tag with a % width corresponding to
       # metric / max.
       def state_bar(s, opts = {})
-        opts = {tag: 'div', max: 1}.merge opts
+        opts = {:tag => 'div', :max => 1}.merge opts
 
         return '' unless s
         x = s.metric
@@ -93,8 +93,8 @@ module Riemann
 
         tag opts[:tag], h(text), 
           :class => "state #{s.state}", 
-          style: "opacity: #{age_fraction s.time}; width: #{size}%", 
-          title: "#{s.state}\n#{s.description}\n\n(at #{time})"
+          :style => "opacity: #{age_fraction s.time}; width: #{size}%", 
+          :title => "#{s.state}\n#{s.description}\n\n(at #{time})"
       end
 
       # Renders a set of states in a chart. Each row is a given host, each
@@ -188,12 +188,11 @@ module Riemann
                 *hosts.map do |host|
                   s = by[[host, service]]
                   td(
-                    s ? state_bar(s, max: maxima[service]) : nil
+                    s ? state_bar(s, :max => maxima[service]) : nil
                   )
                 end
               )
-            end,
-            :class => 'chart'
+            end << {:class => 'chart'} # ruby 1.8.7 this is your fault
           )
         else
           h2(title) +
@@ -210,18 +209,18 @@ module Riemann
                 *services.map do |service|
                   s = by[[host, service]]
                   td(
-                    s ? state_bar(s, max: maxima[service]) : nil
+                    s ? state_bar(s, :max => maxima[service]) : nil
                   )
                 end
               )
-            end,
-            :class => 'chart'
+            end <<
+            {:class => 'chart'}
           )
         end
       end
 
       # Renders a state as a short tag.
-      def state_short(s, opts={tag: 'li'})
+      def state_short(s, opts={:tag => 'li'})
         if s
           "<#{opts[:tag]} class=\"state #{s.state}\" style=\"opacity: #{age_fraction s.time}\" title=\"#{h s.description}\">#{h s.host} #{h s.service}</#{opts[:tag]}>"
         else
