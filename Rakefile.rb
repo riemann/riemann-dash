@@ -22,7 +22,7 @@ gemspec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.summary = 'HTTP dashboard for the distributed event system Riemann.'
 
-  s.add_dependency 'riemann-client', '>= 0.0.3'
+  s.add_dependency 'riemann-client', '>= 0.0.7'
   s.add_dependency 'erubis', '>= 2.7.0'
   s.add_dependency 'sinatra', '>= 1.3.2'
   s.add_dependency 'sass', '>= 3.1.14'
