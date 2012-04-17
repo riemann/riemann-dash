@@ -33,7 +33,7 @@ gemspec = Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.has_rdoc = true
  
-  s.required_ruby_version = '>= 1.9.1'
+  s.required_ruby_version = '>= 1.8.7'
 end
 
 Gem::PackageTask.new gemspec do |p|
