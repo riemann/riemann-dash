@@ -15,13 +15,16 @@ h2 {
   margin: 4px;
 }
 
-.ok {
+.state {
+  background: #cacaca;
+}
+.state.ok {
   background: #B8F1BC;
 }
-.warning {
+.state.warning {
   background: #F7D18E;
 }
-.critical {
+.state.critical {
   background: #FF3C43;
 }
 
