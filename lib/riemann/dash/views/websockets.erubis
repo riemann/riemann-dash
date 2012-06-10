@@ -1,0 +1,55 @@
+<!-- vim: filetype=html 
+-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Riemann</title>
+</head>
+<body>
+  <h1>Websockets yo</h1>
+
+  <input id="message" type="text" />
+  <section id="content"></section>
+
+  <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
+  <script type="text/javascript" src="/jquery.websocket-0.0.1.js"></script>
+
+  <script type="text/javascript">
+var sub = null;
+
+// Subscribes to topic with query, calling f with each received event.
+function subscribe(topic, query, f) {
+  var queryString = "query=" + encodeURI(query);
+  var uri = "ws://127.0.0.1:5556/pubsub/index?" + queryString;
+  var ws = new WebSocket(uri);
+  var $ws = $(ws);
+
+  $ws.bind('open', function() { 
+    $('#content').append("Connected.<br>")
+  });
+
+  $ws.bind('close', function() { 
+    $('#content').append("Closed.<br>")
+  });
+  
+  $ws.bind('message', function(e) {
+    f(JSON.parse(e.originalEvent.data));
+  });
+
+  $(window).unload(function() { ws.close; ws = null });
+  return ws;
+}
+
+$('#message').change(function() {
+  if (sub != null) { sub.close(); }
+
+  sub = subscribe("index", this.value, function(e) {
+    console.log(e);
+    $('#content').append(e.host + " " + e.service + ' ' + e.state + ': ' + e.metric + ' (' + e.tags + ')<br />')
+  });
+});
+  </script>
+</body>
+</html>
