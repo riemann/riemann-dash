@@ -40,6 +40,9 @@ module Riemann
       config[:controllers].each { |d| load_controllers d }
       config[:helpers].each { |d| load_helpers d }
       set :views, File.expand_path(config[:views])
+
+      # Fallback pub dir
+      public_dir(File.join(File.dirname(__FILE__), 'dash', 'public'))
     end
 
     # Executes the configuration file.
