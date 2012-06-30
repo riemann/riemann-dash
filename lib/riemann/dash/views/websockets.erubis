@@ -1,28 +1,30 @@
-<!-- vim: filetype=html 
--->
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8" />
   <title>Riemann</title>
+  <link rel="stylesheet" href="/css" type="text/css" />
+
 </head>
 <body>
   <h1>Websockets yo</h1>
-
-  <input id="message" type="text" />
-  <section id="content"></section>
+ 
+  <div id="chart" class="view">
+  </div>
 
   <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
-  <script type="text/javascript" src="/jquery.websocket-0.0.1.js"></script>
+  <script type="text/javascript" src="/mustache.js"></script>
+  <script src="http://d3js.org/d3.v2.js"></script>
+
 
   <script type="text/javascript">
 var sub = null;
 
-// Subscribes to topic with query, calling f with each received event.
-function subscribe(topic, query, f) {
+// Loads index with query, calling f with each received event.
+function subscribe(query, f) {
   var queryString = "query=" + encodeURI(query);
-  var uri = "ws://127.0.0.1:5556/pubsub/index?" + queryString;
+  var uri = "ws://127.0.0.1:5556/index?subscribe=true&" + queryString;
   var ws = new WebSocket(uri);
   var $ws = $(ws);
 
@@ -42,14 +44,214 @@ function subscribe(topic, query, f) {
   return ws;
 }
 
-$('#message').change(function() {
-  if (sub != null) { sub.close(); }
+// Global clock
+var clock = function() {
+  var clock = new Date();
+  var offset = 0;
+  var callback_i = 0;
+  var callbacks = {};
 
-  sub = subscribe("index", this.value, function(e) {
-    console.log(e);
-    $('#content').append(e.host + " " + e.service + ' ' + e.state + ': ' + e.metric + ' (' + e.tags + ')<br />')
+  var advance = function(t) {
+    if (clock < t) {
+      // New local offset
+      offset = t - (new Date());
+      console.log("new offset is", offset);
+
+      clock = t;
+    }
+
+    console.log("Clock is", clock);
+  }
+
+  var register = function(f) {
+    callback_i = callback_i + 1;
+    callbacks[callback_i] = f;
+    return callback_i;
+  }
+
+  var unregister = function(i) {
+    callbacks.delete(i);
+  }
+
+  // Automatically advance clock.
+  setInterval(function() {
+    offset = offset * 0.99;
+    advance(new Date(new Date().valueOf() + offset));
+    $.each(callbacks, function(k, f) {
+      f(clock);
+    });
+  }, 1000);
+
+  return {
+    'clock': clock,
+    'offset': offset,
+    'advance': advance,
+    'register': register,
+    'unregister': unregister
+  }
+}();
+
+function logTable(container, query) {
+  var $container = $(container);
+  $container.addClass("log-table");
+  $container.append('<input type="text" class="query"></input>');
+  var prompt = $container.find('input');
+  $container.append('<div class="scroll"><table><thead><tr>' +
+      '<th>host</th>' +
+      '<th>service</th>' +
+      '<th>state</th>' +
+      '<th>metric</th>' +
+      '<th>description</th>' +
+      '</tr></thead><tbody></tbody></table></div>');
+  var scroll = $container.find('.scroll');
+  var log = $container.find('tbody');
+  var sub = null;
+  var tracking = true;
+
+  var template = "<tr><td>{{host}}</td><td>{{service}}</td><td>{{state}}</td><td>{{metric}}</td><td>{{description}}</td></tr>";
+
+
+  // Are we following the bottom of the log?
+  scroll.scroll(function(e) {
+    if (scroll.scrollTop() > (log.height() - scroll.height())) {
+      tracking = true;
+    } else {
+      tracking = false;
+    }
   });
-});
+
+  var scrollToBottom = function() {
+    scroll.stop().animate({
+      scrollTop: (log.height() - scroll.height() + 20)
+    }, 1000, "swing");
+  }
+
+  var atBottom = function() {
+    console.log(scroll.scrollTop());
+    console.log(log.height() - scroll.height());
+    return (scroll.scrollTop() > (log.height() - scroll.height()));
+  }
+
+  // Add an event  
+  var append = function(e) {
+    log.append(Mustache.render(template, e));
+    if (tracking) { scrollToBottom() };
+  }
+
+  // Set up our query
+  var startQuery = function(query) {
+    // Cancel existing sub     
+    if (sub != null) { sub.close(); }
+
+    // Subscribe
+    sub = subscribe(query, function(e) {
+      e.time = d3.time.format.iso.parse(e.time);
+      clock.advance(e.time);
+      append(e);
+    });
+  }
+
+  // Initial subscription
+  if (query) { prompt[0].value = query; startQuery(query); }
+
+  // Prompt entry
+  prompt.change(function() { startQuery(this.value) });
+}
+
+
+function timeSeries(container) {
+  // Container
+  var $container = $(container);
+  var container = d3.select(container);
+  $container.append('<input type=\"text\" style="display: block"></input>');
+  var prompt = $container.children().last();
+
+  // Data structures
+  var data = [];
+  var n = 60;
+  var sub = null;
+
+  // Scale
+  var w = 20;
+  var h = 80;
+
+  var x = d3.time.scale()
+    .domain([0,1])
+    .range([0, w * n]);
+  var y = d3.scale.linear()
+    .domain([0,100])
+    .rangeRound([0,h]);
+
+  var updateTime = function(max) {
+    var min = d3.time.minute.offset(max, -1);
+    x.domain([min, max]);
+  }
+  updateTime(new Date());
+
+  // Chart itself
+  var chart = container.append("svg")
+    .attr("class", "timeSeries")
+    .attr("width", w * (n - 1))
+    .attr("height", h);
+
+  // Baseline
+  chart.append("line")
+    .attr("x1", 0)
+    .attr("x2", w * n)
+    .attr("y1", h - .5)
+    .attr("y2", h - .5)
+    .style("stroke", "#000");
+  
+  // Subscribe
+  prompt.change(function() {
+    if (sub != null) { sub.close(); }
+
+    sub = subscribe(this.value, function(e) {
+      // Move time
+      e.time = d3.time.format.iso.parse(e.time);
+      clock.advance(e.time);
+      
+      // Append to window
+      if (data.length >= n) {
+        data.shift();
+      }
+      data.push(e);
+      
+      console.log(e.time, "maps to", x(e.time), "in", x.domain(), x.range());
+    });
+  });
+
+  var clockSub = clock.register(function(t) {
+    updateTime(t);
+    
+    // Move events
+    var rect = chart.selectAll("rect")
+      .data(data, function(e) { if (e) { return e.time } });
+
+    rect.enter().insert("rect", "line")
+        .attr("x", function(e, i) { 
+          return x(e.time) - .5; })
+        .attr("y", function(e) { return h - y(e.metric) - .5 })
+        .attr("width", w)
+        .attr("height", function(e) { return y(e.metric); })
+      .transition()
+        .duration(1000)
+        .attr("x", function(e, i) { return x(e.time) - .5 });
+
+    rect.transition()
+      .duration(1000)
+      .attr("x", function(e) { return x(e.time) - .5; });
+
+    rect.exit().transition()
+      .duration(1000)
+      .attr("x", function(e) { return x(e.time) - .5 })
+      .remove();
+  });
+
+}
+
+logTable("#chart", "true");
+
   </script>
 </body>
 </html>

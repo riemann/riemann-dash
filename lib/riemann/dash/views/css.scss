@@ -28,6 +28,53 @@ h2 {
   background: #FF3C43;
 }
 
+.view {
+  height: 400px;
+  width: 800px;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.view .query {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  margin: 0;
+}
+
+.scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.log-table .scroll {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.log-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log-table thead {
+  text-align: left;
+}
+
+.log-table tbody {
+}
+
+.log-table td {
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
 .chart {
   width: 140px;
   border: 1px solid #ccc;
@@ -39,4 +86,9 @@ h2 {
 .chart th {
   width: 1px;
   text-align: left;
+}
+
+.timeSeries rect {
+  fill: #CA0000;
+  stroke: white;
 }
