@@ -8,7 +8,9 @@
 </head>
 <body>
   <h1>Websockets yo</h1>
- 
+
+  <div id="layout"></div>
+
   <div id="chart" class="view">
   </div>
 
@@ -16,10 +18,10 @@
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
+  <script type="text/javascript" src="/view.js"></script>
 
 
   <script type="text/javascript">
-var sub = null;
 
 // Loads index with query, calling f with each received event.
 function subscribe(query, f) {
@@ -55,12 +57,11 @@ var clock = function() {
     if (clock < t) {
       // New local offset
       offset = t - (new Date());
-      console.log("new offset is", offset);
+      //console.log("new offset is", offset);
 
       clock = t;
     }
-
-    console.log("Clock is", clock);
+    //console.log("Clock is", clock);
   }
 
   var register = function(f) {
@@ -91,6 +92,23 @@ var clock = function() {
   }
 }();
 
+var format = (function() {
+  var metricTemplate = '<div class="bar {{class}}" style="width: {{percent}}%">{{metric}}</div>';
+  var metric = function(e, max) {
+    var max = (max || 1);
+    var data = {
+      'class': e.state,
+      'percent': (e.metric / max * 100),
+      'metric': e.metric.toFixed(2)
+    }
+    return Mustache.render(metricTemplate, data);
+  };
+
+  return {
+    'metric': metric
+  }
+})();
+
 function logTable(container, query) {
   var $container = $(container);
   $container.addClass("log-table");
@@ -108,8 +126,7 @@ function logTable(container, query) {
   var sub = null;
   var tracking = true;
 
-  var template = "<tr><td>{{host}}</td><td>{{service}}</td><td>{{state}}</td><td>{{metric}}</td><td>{{description}}</td></tr>";
-
+  var template = "<tr><td>{{host}}</td><td>{{service}}</td><td>{{state}}</td><td>{{{metric}}}</td><td>{{description}}</td></tr>";
 
   // Are we following the bottom of the log?
   scroll.scroll(function(e) {
@@ -134,6 +151,9 @@ function logTable(container, query) {
 
   // Add an event  
   var append = function(e) {
+    $.extend(e, {
+      metric: format.metric(e)
+    });
     log.append(Mustache.render(template, e));
     if (tracking) { scrollToBottom() };
   }
@@ -252,6 +272,43 @@ function timeSeries(container) {
 
 logTable("#chart", "true");
 
+var root = view.reify({
+  type: 'Fullscreen',
+  child: {
+    type: 'VStack',
+    children: [
+      {
+        type: 'HStack',
+        children: [
+          {type: 'View'},
+          {
+            type: 'VStack',
+            weight: 2, 
+            children: [
+              {type: 'View'},
+              {type: 'View', weight: 0.5},
+              {type: 'View', weight: 2},
+              {type: 'View', weight: 4}
+            ]
+          },
+          {type: 'View'}
+        ]
+      },
+      {
+        type: 'HStack',
+        weight: 0.5,
+        children: [
+          {type: 'View'},
+          {type: 'View', weight: 2},
+          {type: 'View'}
+        ]
+      }
+    ]
+  }
+});
+//$('#layout').append(root.el);
+root.reflow();
+$(window).resize(function() { root.reflow() });
   </script>
 </body>
 </html>

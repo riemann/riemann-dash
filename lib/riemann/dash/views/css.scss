@@ -15,24 +15,17 @@ h2 {
   margin: 4px;
 }
 
-.state {
+.state, .bar {
   background: #cacaca;
 }
-.state.ok {
+.state.ok, .bar.ok {
   background: #B8F1BC;
 }
-.state.warning {
+.state.warning, .bar.warning {
   background: #F7D18E;
 }
-.state.critical {
+.state.critical, .bar.critical {
   background: #FF3C43;
-}
-
-.view {
-  height: 400px;
-  width: 800px;
-  position: relative;
-  border: 1px solid #ccc;
 }
 
 .view .query {
@@ -73,6 +66,12 @@ h2 {
 .log-table td {
   border-bottom: 1px solid #eee;
   vertical-align: top;
+  padding: 3px;
+  white-space: pre;
+}
+.log-table td .bar {
+  margin: -3px;
+  padding: 3px;
 }
 
 .chart {
@@ -91,4 +90,19 @@ h2 {
 .timeSeries rect {
   fill: #CA0000;
   stroke: white;
+}
+
+#layout {
+  position: relative;
+}
+
+.view {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  background: #ddd;
 }
