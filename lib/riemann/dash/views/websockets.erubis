@@ -308,7 +308,10 @@ var root = view.reify({
 });
 //$('#layout').append(root.el);
 root.reflow();
-$(window).resize(function() { root.reflow() });
+$(window).resize(function() { 
+  root.reflow();
+  view.focused().refocus();
+});
   </script>
 </body>
 </html>
