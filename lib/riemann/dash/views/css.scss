@@ -110,5 +110,6 @@ h2 {
 .focusOverlay {
   position: absolute;
   z-index: 1000;
+  border-radius: 5px;
   background: rgba(0,0,0,0.5);
 }
