@@ -5,12 +5,12 @@ require 'sinatra/base'
 module Riemann
   class Dash < Sinatra::Base
     # A little dashboard sinatra application.
-    
+
     require 'yaml'
     require 'find'
     require 'erubis'
     require 'sass'
-    
+
     def self.config
       @config ||= {
         :client =>  {},
