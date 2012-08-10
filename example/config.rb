@@ -8,7 +8,7 @@ config[:client][:host] = '123.45.67.8'
 config[:controllers] << 'controller'
 
 # Use the local view directory instead of the default
-config[:view] = 'view'
+config[:views] = 'views'
 
 # Serve static files from this directory
 public_dir 'public'
