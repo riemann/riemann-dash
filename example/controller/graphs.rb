@@ -59,7 +59,7 @@ class Riemann::Dash
     }.merge h.select { |k, v|
       PARAMS.include? k.to_s
     }
-    
+
     o.inject([]) { |unpacked, pair|
       case pair[1]
       when Array
@@ -89,11 +89,11 @@ class Riemann::Dash
               else
                 TYPES[type] or error 404
               end
-              
+
     @graphs = @graphs.map do |g|
       g.merge request.params
     end
 
-    erubis :graphs, layout: :plain
+    erubis :graphs, layout => :plain
   end
 end
