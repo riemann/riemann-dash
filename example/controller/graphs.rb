@@ -94,6 +94,6 @@ class Riemann::Dash
       g.merge request.params
     end
 
-    erubis :graphs, layout: :plain
+    erubis :graphs, layout => :plain
   end
 end
