@@ -32,7 +32,7 @@ config[:client][:host] = 'my.ustate.server'
 You'll probably want a more specific dashboard:
 
 ``` ruby
-config[:view] = 'my/custom/view'
+config[:views] = 'my/custom/view/directory'
 ```
 
 Then you can write your own index.erb (and other views too, if you like). I've
