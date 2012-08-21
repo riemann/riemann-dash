@@ -142,7 +142,7 @@ module Riemann
           end.merge o[:maxima]
         else
           states.inject(Hash.new(0)) do |m, s|
-            if s.metric
+            if s.metric && !(s.metric.nan?)
               m[s.service] = [s.metric, m[s.service]].max
             end
             m
