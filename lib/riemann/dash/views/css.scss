@@ -105,6 +105,7 @@ h2 {
   height: 0;
   width: 0;
   background: #ddd;
+  overflow: hidden;
 }
 
 .focusOverlay {
@@ -112,4 +113,26 @@ h2 {
   z-index: 1000;
   border-radius: 5px;
   background: rgba(0,0,0,0.5);
+}
+
+.quickfit {
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.gauge {
+  .label {
+    width: 80%;
+    float: right;
+    text-align: right;
+  }
+
+  .value {
+    height: 80%;
+  }
+
+  .metric {
+    text-align: right;
+  }
 }

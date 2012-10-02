@@ -16,99 +16,17 @@
 
   <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
+  <script type="text/javascript" src="/jquery.quickfit.js"></script>
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
   <script type="text/javascript" src="/view.js"></script>
+  <script type="text/javascript" src="/clock.js"></script>
+  <script type="text/javascript" src="/format.js"></script>
+  <script type="text/javascript" src="/subs.js"></script>
+  <script type="text/javascript" src="/gauge.js"></script>
 
 
   <script type="text/javascript">
-
-// Loads index with query, calling f with each received event.
-function subscribe(query, f) {
-  var queryString = "query=" + encodeURI(query);
-  var uri = "ws://127.0.0.1:5556/index?subscribe=true&" + queryString;
-  var ws = new WebSocket(uri);
-  var $ws = $(ws);
-
-  $ws.bind('open', function() { 
-    $('#content').append("Connected.<br>")
-  });
-
-  $ws.bind('close', function() { 
-    $('#content').append("Closed.<br>")
-  });
-  
-  $ws.bind('message', function(e) {
-    f(JSON.parse(e.originalEvent.data));
-  });
-
-  $(window).unload(function() { ws.close; ws = null });
-  return ws;
-}
-
-// Global clock
-var clock = function() {
-  var clock = new Date();
-  var offset = 0;
-  var callback_i = 0;
-  var callbacks = {};
-
-  var advance = function(t) {
-    if (clock < t) {
-      // New local offset
-      offset = t - (new Date());
-      //console.log("new offset is", offset);
-
-      clock = t;
-    }
-    //console.log("Clock is", clock);
-  }
-
-  var register = function(f) {
-    callback_i = callback_i + 1;
-    callbacks[callback_i] = f;
-    return callback_i;
-  }
-
-  var unregister = function(i) {
-    callbacks.delete(i);
-  }
-
-  // Automatically advance clock.
-  setInterval(function() {
-    offset = offset * 0.99;
-    advance(new Date(new Date().valueOf() + offset));
-    $.each(callbacks, function(k, f) {
-      f(clock);
-    });
-  }, 1000);
-
-  return {
-    'clock': clock,
-    'offset': offset,
-    'advance': advance,
-    'register': register,
-    'unregister': unregister
-  }
-}();
-
-var format = (function() {
-  var metricTemplate = '<div class="bar {{class}}" style="width: {{percent}}%">{{metric}}</div>';
-  var metric = function(e, max) {
-    var max = (max || 1);
-    var data = {
-      'class': e.state,
-      'percent': (e.metric / max * 100),
-      'metric': e.metric.toFixed(2)
-    }
-    return Mustache.render(metricTemplate, data);
-  };
-
-  return {
-    'metric': metric
-  }
-})();
-
 function logTable(container, query) {
   var $container = $(container);
   $container.addClass("log-table");
@@ -164,7 +82,7 @@ function logTable(container, query) {
     if (sub != null) { sub.close(); }
 
     // Subscribe
-    sub = subscribe(query, function(e) {
+    sub = subs.subscribe(query, function(e) {
       e.time = d3.time.format.iso.parse(e.time);
       clock.advance(e.time);
       append(e);
@@ -277,7 +195,7 @@ var root = view.reify({
   child: {
     type: 'VStack',
     children: [
-      {
+/*      {
         type: 'HStack',
         children: [
           {type: 'View'},
@@ -293,14 +211,29 @@ var root = view.reify({
           },
           {type: 'View'}
         ]
-      },
+      },*/
       {
         type: 'HStack',
         weight: 0.5,
         children: [
-          {type: 'View'},
-          {type: 'View', weight: 2},
-          {type: 'View'}
+          {type: 'VStack',
+           children: [
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
+             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'}
+          ]},
+          {type: 'Gauge', label: 'Memory', query: 'service = "memory"', weight: 2},
+          {type: 'VStack',
+            children: [
+              {type: 'Gauge', label: 'Disk /', query: 'service = "disk /"'},
+              {type: 'Gauge', label: 'Disk /dev', query: 'service = "disk /dev"'},
+              {type: 'Gauge', label: 'Disk /run', query: 'service = "disk /run"'}
+            ]}
         ]
       }
     ]
@@ -310,7 +243,9 @@ var root = view.reify({
 root.reflow();
 $(window).resize(function() { 
   root.reflow();
-  view.focused().refocus();
+  try {
+    view.focused().refocus();
+  } catch (e) { };
 });
   </script>
 </body>
