@@ -115,6 +115,26 @@ h2 {
   background: rgba(0,0,0,0.5);
 }
 
+#simplemodal-overlay {
+  background-color:#000;
+}
+#simplemodal-container {
+  background-color:#fff; 
+  padding:12px;
+  border-radius: 4px;
+}
+#simplemodal-container a.modalCloseImg {
+  background:url(/x.png) no-repeat; /* adjust url as required */
+  width:25px;
+  height:29px;
+  display:inline;
+  z-index:3200;
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  cursor:pointer;
+}
+
 .quickfit {
   display: block;
   white-space: nowrap;
@@ -133,6 +153,8 @@ h2 {
   }
 
   .metric {
+    font-weight: bolder;
     text-align: right;
   }
 }
+
