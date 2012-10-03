@@ -19,10 +19,11 @@
   <script type="text/javascript" src="/jquery.quickfit.js"></script>
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
-  <script type="text/javascript" src="/view.js"></script>
   <script type="text/javascript" src="/clock.js"></script>
-  <script type="text/javascript" src="/format.js"></script>
   <script type="text/javascript" src="/subs.js"></script>
+  <script type="text/javascript" src="/format.js"></script>
+  <script type="text/javascript" src="/view.js"></script>
+  <script type="text/javascript" src="/title.js"></script>
   <script type="text/javascript" src="/gauge.js"></script>
 
 
@@ -195,26 +196,10 @@ var root = view.reify({
   child: {
     type: 'VStack',
     children: [
-/*      {
-        type: 'HStack',
-        children: [
-          {type: 'View'},
-          {
-            type: 'VStack',
-            weight: 2, 
-            children: [
-              {type: 'View'},
-              {type: 'View', weight: 0.5},
-              {type: 'View', weight: 2},
-              {type: 'View', weight: 4}
-            ]
-          },
-          {type: 'View'}
-        ]
-      },*/
+      {type: 'Title', text: 'Riemann health'},
       {
         type: 'HStack',
-        weight: 0.5,
+        weight: 9,
         children: [
           {type: 'VStack',
            children: [
