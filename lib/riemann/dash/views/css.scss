@@ -122,6 +122,8 @@ h2 {
   background-color:#fff; 
   padding:12px;
   border-radius: 4px;
+  min-width: 400px;
+  min-height: 500px;
 }
 #simplemodal-container a.modalCloseImg {
   background:url(/x.png) no-repeat; /* adjust url as required */
@@ -135,6 +137,7 @@ h2 {
   cursor:pointer;
 }
 
+
 .quickfit {
   display: block;
   white-space: nowrap;
@@ -142,7 +145,7 @@ h2 {
 }
 
 .gauge {
-  .label {
+  .title {
     width: 80%;
     float: right;
     text-align: right;

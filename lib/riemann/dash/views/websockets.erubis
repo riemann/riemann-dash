@@ -194,36 +194,7 @@ logTable("#chart", "true");
 
 var root = view.reify({
   type: 'Fullscreen',
-  child: {
-    type: 'VStack',
-    children: [
-      {type: 'Title', text: 'Riemann health'},
-      {
-        type: 'HStack',
-        weight: 9,
-        children: [
-          {type: 'VStack',
-           children: [
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'},
-             {type: 'Gauge', label: 'CPU', query: 'service = "cpu"'}
-          ]},
-          {type: 'Gauge', label: 'Memory', query: 'service = "memory"', weight: 2},
-          {type: 'VStack',
-            children: [
-              {type: 'Gauge', label: 'Disk /', query: 'service = "disk /"'},
-              {type: 'Gauge', label: 'Disk /dev', query: 'service = "disk /dev"'},
-              {type: 'Gauge', label: 'Disk /run', query: 'service = "disk /run"'}
-            ]}
-        ]
-      }
-    ]
-  }
+  child: {type: 'Gauge', title: 'CPU', query: 'service = "cpu"'}
 });
 //$('#layout').append(root.el);
 root.reflow();
