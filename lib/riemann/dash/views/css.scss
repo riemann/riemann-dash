@@ -1,3 +1,16 @@
+/* Colors! */
+$bright-green: #2CFE40;
+$dark-green: #059F00;
+$fuschia: #FD47B7;
+$purple: #7C2CFF;
+$orange: #FF6513;
+$amber: #FFC712;
+$light-blue: #2CCCFE;
+$blue: #2C55FF;
+$dark-grey: #1F1F1F;
+$green: #06FA23;
+$yellow: #FEF206;
+
 body {
   background: #000;
   color: #fff;
@@ -16,21 +29,30 @@ h2 {
 }
 
 .box {
-  float: left;
-  margin: 4px;
+  position: absolute;
+  height: auto;
+  width: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 3px;
+  padding: 3px;
+  background: $dark-grey;
+  border-radius: 3px;
 }
 
-.state, .bar {
-  background: #cacaca;
-}
 .state.ok, .bar.ok {
-  background: #B8F1BC;
+  background: $green;
+  color: #000;
 }
 .state.warning, .bar.warning {
-  background: #F7D18E;
+  background: $amber;
+  color: #000;
 }
 .state.critical, .bar.critical {
-  background: #FF3C43;
+  background: $orange;
+  color: #000;
 }
 
 .view .query {
@@ -124,10 +146,11 @@ h2 {
 }
 #simplemodal-container {
   background-color:#fff; 
+  color: #000;
   padding:12px;
   border-radius: 4px;
   min-width: 400px;
-  min-height: 500px;
+  min-height: 400px;
 }
 #simplemodal-container a.modalCloseImg {
   background:url(/x.png) no-repeat; /* adjust url as required */
@@ -153,27 +176,22 @@ h2 {
 }
 
 .gauge {
-  .box {
-    position: absolute;
-    height: auto;
-    width: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 3px;
-    padding: 3px;
-    background: #333;
-    border-radius: 3px;
-  }
-
   .title {
-    width: 100%;
+    position: absolute;
+    height: 25%;
+    width: 75%;
+    bottom: 3px;
+    right: 3px;
     text-align: right;
   }
 
   .value {
-    height: 80%;
+    position: absolute;
+    height: 75%;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
   }
 
   .metric {
