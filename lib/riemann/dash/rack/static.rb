@@ -6,9 +6,9 @@ class Riemann::Dash::Static
   end
 
   def call(env)
-    r = @file_server.call env
-    if r[0] == 404   
-      @app.call env
+    r = @app.call env
+    if r[0] < 200 or 400 <= r[0]
+      @file_server.call env
     else
       r
     end

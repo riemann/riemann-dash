@@ -21,11 +21,14 @@
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
   <script type="text/javascript" src="/clock.js"></script>
+  <script type="text/javascript" src="/persistence.js"></script>
+  <script type="text/javascript" src="/keys.js"></script>
   <script type="text/javascript" src="/subs.js"></script>
   <script type="text/javascript" src="/format.js"></script>
   <script type="text/javascript" src="/view.js"></script>
   <script type="text/javascript" src="/title.js"></script>
   <script type="text/javascript" src="/gauge.js"></script>
+  <script type="text/javascript" src="/dash.js"></script>
 
 
   <script type="text/javascript">
@@ -190,20 +193,7 @@ function timeSeries(container) {
 
 }
 
-logTable("#chart", "true");
-
-var root = view.reify({
-  type: 'Fullscreen',
-  child: {type: 'Gauge', title: 'CPU', query: 'service = "cpu"'}
-});
-//$('#layout').append(root.el);
-root.reflow();
-$(window).resize(function() { 
-  root.reflow();
-  try {
-    view.focused().refocus();
-  } catch (e) { };
-});
+  dash.reload();
   </script>
 </body>
 </html>
