@@ -1,3 +1,8 @@
+body {
+  background: #000;
+  color: #fff;
+}
+
 html,table {
   font-family: Helvetica Nueue, Helvetica, sans;
   font-size: 8pt;
@@ -104,7 +109,6 @@ h2 {
   left: 0;
   height: 0;
   width: 0;
-  background: #ddd;
   overflow: hidden;
 }
 
@@ -112,7 +116,7 @@ h2 {
   position: absolute;
   z-index: 1000;
   border-radius: 5px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(255,251,180,0.5);
 }
 
 #simplemodal-overlay {
@@ -144,10 +148,27 @@ h2 {
   width: 100%;
 }
 
+.title {
+  text-align: right;
+}
+
 .gauge {
+  .box {
+    position: absolute;
+    height: auto;
+    width: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 3px;
+    padding: 3px;
+    background: #333;
+    border-radius: 3px;
+  }
+
   .title {
-    width: 80%;
-    float: right;
+    width: 100%;
     text-align: right;
   }
 
