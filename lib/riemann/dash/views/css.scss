@@ -41,7 +41,8 @@ h2 {
 
 #toolbar {
   width: 100%;
-  height: 24px;
+  height: 28px;
+  overflow: hidden;
   position: absolute;
  
   input {
@@ -49,12 +50,43 @@ h2 {
     color: #fff;
     border: 1px solid $grey;
   }
+
+  .server {
+    margin: 3px;
+    float: right;
+  }
+
+  .pager {
+    margin: 0px;
+    padding: 0;
+    float: left;
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      margin: 3px;
+      padding: 3px 6px;
+      font-size: 12px;
+      border: 1px solid $grey;
+      color: #fff;
+      background: $dark-grey;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background: $grey;
+    }
+
+    li.current {
+      border-color: white;
+    }
+  }
 }
 
 #view {
   width: 100%;
   position: absolute;
-  top: 24px;
+  top: 28px;
   bottom: 0px;
 }
 
