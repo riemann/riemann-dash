@@ -11,7 +11,17 @@ $dark-grey: #1F1F1F;
 $green: #06FA23;
 $yellow: #FEF206;
 
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: #000;
   color: #fff;
 }
@@ -26,6 +36,20 @@ h1 {
 h2 {
   margin-top: 0;
   margin-bottom: 0.1em;
+}
+
+#toolbar {
+  width: 100%;
+  height: 24px;
+  position: absolute;
+  background: $dark-grey;
+}
+
+#view {
+  width: 100%;
+  position: absolute;
+  top: 24px;
+  bottom: 0px;
 }
 
 .box {

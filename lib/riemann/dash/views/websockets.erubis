@@ -7,9 +7,6 @@
 
 </head>
 <body>
-  <div id="chart" class="view">
-  </div>
-
   <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
   <script type="text/javascript" src="/jquery.simplemodal.1.4.3.min.js"></script>
@@ -27,6 +24,8 @@
   <script type="text/javascript" src="/gauge.js"></script>
   <script type="text/javascript" src="/dash.js"></script>
 
+  <div id="toolbar">Riemann.</div>
+  <div id="view"></div>
 
   <script type="text/javascript">
 function logTable(container, query) {
