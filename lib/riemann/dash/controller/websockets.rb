@@ -31,6 +31,9 @@ class Riemann::Dash
 
     new = {}
 
+    # Server
+    new['server'] = update['server'] or old['server']
+
     # Merge workspaces
     seen = Set.new
     new['workspaces'] = update['workspaces']
