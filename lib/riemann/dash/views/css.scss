@@ -237,6 +237,11 @@ h2 {
   text-align: right;
 }
 
+.metric {
+  font-weight: bolder;
+  text-align: right;
+}
+
 .gauge {
   .title {
     position: absolute;
@@ -255,10 +260,49 @@ h2 {
     width: 100%;
     text-align: right;
   }
-
-  .metric {
-    font-weight: bolder;
-    text-align: right;
-  }
 }
 
+.grid {
+  .title {
+    height: 32px;
+    font-size: 24px;
+    text-align: right;
+  }
+
+  table {
+    position: absolute;
+    width: 100%;
+    border-spacing: 3px;
+
+    tr > *:first-child {
+      width: 1px;
+    }
+
+    th {
+      font-weight: normal;
+      vertical-align: top;
+      text-align: right;
+      padding: 0 3px;
+    }
+
+    thead {
+      margin: 0;
+      padding: 0;
+
+      tr {
+        padding: 0;
+      }
+
+      th {
+        margin: 0;
+        vertical-align: bottom;
+      }
+    }
+
+    .box {
+      position: static;
+      vertical-align: top;
+      text-align: right;
+    }
+  }
+}

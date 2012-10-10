@@ -10,6 +10,7 @@
   <div id="toolbar"></div>
   <div id="view"></div>
 
+  <script type="text/javascript" src="/underscore-min.js"></script>
   <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
   <script type="text/javascript" src="/jquery.simplemodal.1.4.3.min.js"></script>
@@ -26,6 +27,7 @@
   <script type="text/javascript" src="/title.js"></script>
   <script type="text/javascript" src="/help.js"></script>
   <script type="text/javascript" src="/gauge.js"></script>
+  <script type="text/javascript" src="/views/grid.js"></script>
   <script type="text/javascript" src="/dash.js"></script>
 
   <script type="text/javascript">
