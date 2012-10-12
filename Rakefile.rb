@@ -27,6 +27,7 @@ gemspec = Gem::Specification.new do |s|
   s.add_dependency 'sinatra', '>= 1.3.2'
   s.add_dependency 'sass', '>= 3.1.14'
   s.add_dependency 'thin', '>= 1.3.1'
+  s.add_dependency 'multi_json', '1.3.6'
    
   s.files = FileList['lib/**/*', 'bin/*', 'LICENSE', 'README.markdown'].to_a
   s.executables << 'riemann-dash'
