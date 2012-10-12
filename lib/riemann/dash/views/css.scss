@@ -104,6 +104,15 @@ h2 {
   border-radius: 3px;
 }
 
+.bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .state.ok, .bar.ok {
   background: $green;
   color: #000;
@@ -300,7 +309,7 @@ h2 {
     }
 
     .box {
-      position: static;
+      position: relative;
       vertical-align: top;
       text-align: right;
     }
