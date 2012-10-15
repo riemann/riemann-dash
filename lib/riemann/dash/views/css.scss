@@ -44,6 +44,7 @@ h2 {
   height: 28px;
   overflow: hidden;
   position: absolute;
+  font-size: 12px;
  
   input {
     background: $dark-grey;
@@ -56,6 +57,18 @@ h2 {
     float: right;
   }
 
+  .load {
+    position: relative;
+    margin: 3px;
+    float: right;
+    background: $grey;
+    width: 100px;
+    padding: 3px 6px;
+    span {
+      z-index: -1;
+    }
+  }
+
   .pager {
     margin: 0px;
     padding: 0;
@@ -66,7 +79,6 @@ h2 {
       display: inline-block;
       margin: 3px;
       padding: 3px 6px;
-      font-size: 12px;
       border: 1px solid $grey;
       color: #fff;
       background: $dark-grey;

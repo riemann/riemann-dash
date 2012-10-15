@@ -17,6 +17,7 @@
   <script type="text/javascript" src="/jquery.quickfit.js"></script>
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
+  <script type="text/javascript" src="/profile.js"></script>
   <script type="text/javascript" src="/clock.js"></script>
   <script type="text/javascript" src="/persistence.js"></script>
   <script type="text/javascript" src="/keys.js"></script>
