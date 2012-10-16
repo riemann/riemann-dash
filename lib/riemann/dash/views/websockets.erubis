@@ -25,9 +25,9 @@
   <script type="text/javascript" src="/format.js"></script>
   <script type="text/javascript" src="/toolbar.js"></script>
   <script type="text/javascript" src="/view.js"></script>
-  <script type="text/javascript" src="/title.js"></script>
-  <script type="text/javascript" src="/help.js"></script>
-  <script type="text/javascript" src="/gauge.js"></script>
+  <script type="text/javascript" src="/views/title.js"></script>
+  <script type="text/javascript" src="/views/help.js"></script>
+  <script type="text/javascript" src="/views/gauge.js"></script>
   <script type="text/javascript" src="/views/grid.js"></script>
   <script type="text/javascript" src="/dash.js"></script>
 
