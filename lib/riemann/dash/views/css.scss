@@ -74,21 +74,29 @@ h2 {
     }
   }
 
+  .button {
+    display: inline-block;
+    margin: 3px;
+    padding: 3px 6px;
+    border: 1px solid $grey;
+    color: #fff;
+    background: $dark-grey;
+    cursor: pointer;
+  }
+
   .pager {
-    margin: 0px;
+    margin: 0;
     padding: 0;
     float: left;
-    list-style-type: none;
+
+    ol {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
 
     li {
-      display: inline-block;
-      margin: 3px;
-      padding: 3px 6px;
-      border: 1px solid $grey;
-      color: #fff;
-      background: $dark-grey;
-      cursor: pointer;
-
       .delete {
         display: none;
       }
