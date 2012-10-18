@@ -34,15 +34,8 @@ class Riemann::Dash
     # Server
     new['server'] = update['server'] or old['server']
 
-    # Merge workspaces
-    seen = Set.new
-    new['workspaces'] = update['workspaces']
-    seen = new['workspaces'].map { |w| w['name'] }
-    (old['workspaces'] || {}).each do |w|
-      unless seen.include? w['name']
-        new[workspaces].unshift w
-      end
-    end
+    p update['workspaces']
+    new['workspaces'] = update['workspaces'] or old['workspaces']
 
     # Save new config
     FileUtils.mkdir_p 'ws'

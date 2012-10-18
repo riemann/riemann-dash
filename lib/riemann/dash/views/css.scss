@@ -88,6 +88,10 @@ h2 {
       color: #fff;
       background: $dark-grey;
       cursor: pointer;
+
+      .delete {
+        display: none;
+      }
     }
 
     li:hover {
@@ -96,6 +100,11 @@ h2 {
 
     li.current {
       border-color: white;
+
+      .delete {
+        display: inline;
+        margin-left: 10px;
+      }
     }
   }
 }

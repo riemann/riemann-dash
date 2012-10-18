@@ -15,6 +15,7 @@
   <script type="text/javascript" src="/jquery.json-2.2.min.js"></script>
   <script type="text/javascript" src="/jquery.simplemodal.1.4.3.min.js"></script>
   <script type="text/javascript" src="/jquery.quickfit.js"></script>
+  <script type="text/javascript" src="/util.js"></script>
   <script type="text/javascript" src="/mustache.js"></script>
   <script src="http://d3js.org/d3.v2.js"></script>
   <script type="text/javascript" src="/profile.js"></script>
