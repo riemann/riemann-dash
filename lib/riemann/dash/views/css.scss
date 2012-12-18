@@ -8,7 +8,9 @@ $amber: #FFC712;
 $light-blue: #2CCCFE;
 $blue: #2C55FF;
 $dark-grey: #1F1F1F;
-$grey: #777;
+$light-grey: #ccc;
+$off-white: #dedede;
+$grey: #888;
 $green: #06FA23;
 $yellow: #FEF206;
 
@@ -23,12 +25,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: $dark-grey;
 }
 
 html,table {
-  font-family: Helvetica Nueue, Helvetica, sans;
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-weight:400;
+  font-stretch:normal;
   font-size: 12pt;
 }
 h1 {
@@ -40,18 +44,22 @@ h2 {
 }
 
 #toolbar {
-  width: 100%;
   height: 28px;
   overflow: hidden;
   position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
   font-size: 12px;
  
   input {
-    background: $dark-grey;
-    color: #fff;
-    border: 1px solid $grey;
+    background: $off-white;
+    border: 1px solid $dark-grey;
     margin: 3px;
     padding: 3px 6px;
+  }
+  input:hover {
+    background: lighten($off-white, 5%);
   }
 
   .server {
@@ -64,12 +72,12 @@ h2 {
     float: right;
     border: 1px solid $grey;
     width: 100px;
-    padding: 3px 6px;
+    padding: 4px 6px 3px 6px;
     span {
       z-index: -1;
     }
     .bar {
-      background: rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.25);
       width: 1%;
     }
   }
@@ -78,10 +86,12 @@ h2 {
     display: inline-block;
     margin: 3px;
     padding: 3px 6px;
-    border: 1px solid $grey;
-    color: #fff;
-    background: $dark-grey;
+    border: 1px solid $light-grey;
+    background: $off-white;
     cursor: pointer;
+  }
+  .button:hover {
+    background: lighten($off-white, 5%);
   }
 
   .pager {
@@ -103,11 +113,11 @@ h2 {
     }
 
     li:hover {
-      background: $grey;
+      background: lighten($off-white, 10%);
     }
 
     li.current {
-      border-color: white;
+      border-color: $dark-grey;
 
       .delete {
         display: inline;
@@ -134,7 +144,7 @@ h2 {
   right: 0;
   margin: 3px;
   padding: 3px;
-  background: $dark-grey;
+  background: $light-grey;
   border-radius: 3px;
 }
 
@@ -243,7 +253,7 @@ h2 {
   position: absolute;
   z-index: 1000;
   border-radius: 5px;
-  background: rgba(255,251,180,0.5);
+  background: rgba(0,0,0,0.5);
 }
 
 #simplemodal-overlay {
