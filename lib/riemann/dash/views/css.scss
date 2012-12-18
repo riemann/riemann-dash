@@ -35,13 +35,6 @@ html,table {
   font-stretch:normal;
   font-size: 14px;
 }
-h1 {
-  margin-bottom: 0.2em;
-}
-h2 {
-  margin-top: 0;
-  margin-bottom: 0.1em;
-}
 
 #toolbar {
   height: 28px;
@@ -128,10 +121,11 @@ h2 {
 }
 
 #view {
-  width: 100%;
   position: absolute;
+  left: 3px;
+  right: 3px;
   top: 28px;
-  bottom: 0px;
+  bottom: 3px;
 }
 
 .box {
@@ -279,15 +273,17 @@ h2 {
   cursor:pointer;
 }
 
-
 .quickfit {
   display: block;
   white-space: nowrap;
   width: 100%;
 }
 
-.title {
+h2 {
   text-align: right;
+  display: block;
+  padding: 3px;
+  margin: 0;
 }
 
 .metric {
@@ -295,8 +291,16 @@ h2 {
   text-align: right;
 }
 
+.title h2 {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+}
+
 .gauge {
-  .title {
+  h2 {
     position: absolute;
     height: 25%;
     width: 75%;
@@ -316,15 +320,24 @@ h2 {
 }
 
 .grid {
-  .title {
-    height: 32px;
+  h2 {
+    height: 28px;
     font-size: 24px;
     text-align: right;
+  }
+
+  .container {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   table {
     position: absolute;
     width: 100%;
+    height: 100%;
     border-spacing: 3px;
 
     tr > *:first-child {
