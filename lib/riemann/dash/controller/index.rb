@@ -3,7 +3,7 @@ class Riemann::Dash
   require 'fileutils'
   require 'set'
 
-  WS_CONFIG_FILE = "config.json"
+  WS_CONFIG_FILE = "config/config.json"
 
   get '/' do
     erb :index, :layout => false
@@ -38,7 +38,7 @@ class Riemann::Dash
     new['workspaces'] = update['workspaces'] or old['workspaces']
 
     # Save new config
-    FileUtils.mkdir_p 'ws'
+    FileUtils.mkdir_p 'config'
     File.open(WS_CONFIG_FILE, 'w') do |f|
       f.write(MultiJson.encode(new))
     end
