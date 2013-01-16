@@ -5,4 +5,4 @@ pkg/
 .DS_Store
 .*.swp
 *.log
-/ws/
+/config

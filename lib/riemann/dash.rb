@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'riemann/client'
 require 'sinatra/base'
 
 module Riemann
@@ -13,22 +12,9 @@ module Riemann
 
     def self.config
       @config ||= {
-        :client =>  {},
-        :age_scale => 60 * 30,
-        :state_order => {
-          'critical' => 3,
-          'warning' => 2,
-          'ok' => 1
-        },
-        :strftime => '%H:%M:%S',
         :controllers => [File.join(File.dirname(__FILE__), 'dash', 'controller')],
-        :helpers => [File.join(File.dirname(__FILE__), 'dash', 'helper')],
         :views => File.join(File.dirname(__FILE__), 'dash', 'views')
       }
-    end
-
-    def self.client
-      @client ||= Riemann::Client.new(config[:client])
     end
 
     def self.load(filename)
@@ -38,7 +24,6 @@ module Riemann
       end
 
       config[:controllers].each { |d| load_controllers d }
-      config[:helpers].each { |d| load_helpers d }
       set :views, File.expand_path(config[:views])
 
       # Fallback pub dir
@@ -55,12 +40,13 @@ module Riemann
       end
     end
 
-    # Load controllers.
-    # Controllers can be regular old one-file-per-class, but if you prefer a little
-    # more modularity, this method will allow you to define all controller methods
-    # in their own files.  For example, get "/posts/*/edit" can live in
-    # controller/posts/_/edit.rb. The sorting system provided here requires
-    # files in the correct order to handle wildcards appropriately.
+    # Load controllers. 
+    # Controllers can be regular old one-file-per-class, but
+    # if you prefer a little more modularity, this method will allow you to
+    # define all controller methods in their own files.  For example, get
+    # "/posts/*/edit" can live in controller/posts/_/edit.rb. The sorting
+    # system provided here requires files in the correct order to handle
+    # wildcards appropriately.
     def self.load_controllers(dir)
       rbs = []
       Find.find(
@@ -104,27 +90,10 @@ module Riemann
       end 
     end 
 
-    # Load helpers
-    def self.load_helpers(dir)
-      Find.find(
-        File.expand_path(dir)
-      ) do |path|
-        require path if path =~ /\.rb$/
-      end
-    end
-
     # Add an additional public directory.
     def self.public_dir(dir)
       require 'riemann/dash/rack/static'
       use Riemann::Dash::Static, :root => dir
-    end
-
-    def client
-      self.class.client
-    end
-
-    def query(*a)
-      self.class.client.query(*a).events || []
     end
   end
 end
