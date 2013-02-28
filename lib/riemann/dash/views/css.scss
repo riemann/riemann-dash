@@ -14,6 +14,13 @@ $grey: #888;
 $green: #06FA23;
 $yellow: #FEF206;
 
+@mixin vendor-prefix($name, $argument) {
+  #{$name}: $argument;
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+}
+
 html {
   height: 100%;
   margin: 0;
@@ -151,6 +158,10 @@ html,table {
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+}
+
+.state {
+  @include vendor-prefix(transition, all 0.3s linear);
 }
 
 .state.ok, .bar.ok {
