@@ -9,7 +9,7 @@
 <body>
   <div id="toolbar"></div>
   <div id="view"></div>
-
+  <script type="text/javascript" src="/vendor/smoothie.js"></script>
   <script type="text/javascript" src="/underscore-min.js"></script>
   <script type="text/javascript" src="/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="/jquery-ui-1.9.0.custom.min.js"></script>
@@ -28,6 +28,7 @@
   <script type="text/javascript" src="/format.js"></script>
   <script type="text/javascript" src="/toolbar.js"></script>
   <script type="text/javascript" src="/view.js"></script>
+  <script type="text/javascript" src="/views/timeseries.js"></script>
   <script type="text/javascript" src="/views/title.js"></script>
   <script type="text/javascript" src="/views/help.js"></script>
   <script type="text/javascript" src="/views/gauge.js"></script>
