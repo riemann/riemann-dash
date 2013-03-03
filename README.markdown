@@ -19,10 +19,8 @@ Configuring
 Riemann-dash takes an optional config file, which you can specify as the first
 command-line argument. If none is given, it looks for a file in the local
 directory: config.rb. That file can override any configuration options on the
-Dash class (hence all Sinatra configuration) as well as the Riemann client
-options, etc.
+Dash class, and hence, all Sinatra configuration.
 
 ``` ruby
 set :port, 6000 # HTTP server on port 6000
-config[:client][:host] = 'my.ustate.server'
 ```
