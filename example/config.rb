@@ -1,16 +1,17 @@
 # Serve HTTP traffic on this port
 set  :port, 4567
 
-riemann = 'lib/riemann/dash'
+riemann_base = '.'
+riemann_src = "${riemann_base}/lib/riemann/dash"
 
 # Add custom controllers in controller/
-config[:controllers] = ["#{riemann}/controller"]
+config[:controllers] = ["#{riemann_src}/controller"]
 
 # Use the local view directory instead of the default
-config[:views] = "#{riemann}/views"
+config[:views] = "#{riemann_src}/views"
 
 # Specify a custom path to your workspace config.json
-config[:ws_config] = 'config/config.json'
+config[:ws_config] = "#{riemann_base}/config/config.json'
 
 # Serve static files from this directory
-config[:public] = "#{riemann}/public"
+config[:public] = "#{riemann_src}/public"
