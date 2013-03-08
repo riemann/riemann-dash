@@ -23,4 +23,5 @@ Dash class, and hence, all Sinatra configuration.
 
 ``` ruby
 set :port, 6000 # HTTP server on port 6000
+config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
