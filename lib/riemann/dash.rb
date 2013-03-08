@@ -13,7 +13,9 @@ module Riemann
     def self.config
       @config ||= {
         :controllers => [File.join(File.dirname(__FILE__), 'dash', 'controller')],
-        :views => File.join(File.dirname(__FILE__), 'dash', 'views')
+        :views => File.join(File.dirname(__FILE__), 'dash', 'views'),
+        :ws_config => File.join(File.dirname(__FILE__), 'config', 'config.json'),
+        :public => File.join(File.dirname(__FILE__), 'dash', 'public')
       }
     end
 
@@ -23,11 +25,14 @@ module Riemann
         puts "No configuration loaded; using defaults."
       end
 
+      # load controllers
       config[:controllers].each { |d| load_controllers d }
+
+      # views
       set :views, File.expand_path(config[:views])
 
-      # Fallback pub dir
-      public_dir(File.join(File.dirname(__FILE__), 'dash', 'public'))
+      # setup public dir
+      public_dir(config[:public])
     end
 
     # Executes the configuration file.
@@ -96,4 +101,4 @@ module Riemann
       use Riemann::Dash::Static, :root => dir
     end
   end
-end
+
