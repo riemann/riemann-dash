@@ -14,7 +14,7 @@ module Riemann
       @config ||= {
         :controllers => [File.join(File.dirname(__FILE__), 'dash', 'controller')],
         :views => File.join(File.dirname(__FILE__), 'dash', 'views'),
-        :ws_config => File.join(File.dirname(__FILE__), 'config', 'config.json'),
+        :ws_config => File.join(File.dirname(__FILE__), '..', '..', 'config', 'config.json'),
         :public => File.join(File.dirname(__FILE__), 'dash', 'public')
       }
     end
@@ -102,3 +102,4 @@ module Riemann
     end
   end
 
+end
