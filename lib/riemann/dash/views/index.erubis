@@ -33,6 +33,7 @@
   <script type="text/javascript" src="/views/help.js"></script>
   <script type="text/javascript" src="/views/gauge.js"></script>
   <script type="text/javascript" src="/views/grid.js"></script>
+  <script type="text/javascript" src="/views/grid-vert.js"></script>
   <script type="text/javascript" src="/dash.js"></script>
 
   <script type="text/javascript">
