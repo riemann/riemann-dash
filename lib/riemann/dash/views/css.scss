@@ -164,7 +164,7 @@ html,table {
   @include vendor-prefix(transition, all 0.3s linear);
 }
 
-.state.ok, .bar.ok {
+.state.ok, .state.okay, .bar.ok, .bar.okay {
   background: $green;
   color: #000;
 }
@@ -172,7 +172,7 @@ html,table {
   background: $amber;
   color: #000;
 }
-.state.critical, .bar.critical {
+.state.critical, .state.failure, .bar.critical, .bar.failure {
   background: $orange;
   color: #000;
 }
