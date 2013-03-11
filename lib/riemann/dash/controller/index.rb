@@ -3,7 +3,7 @@ class Riemann::Dash::App
   require 'fileutils'
   require 'set'
 
-  WS_CONFIG_FILE = @config[:ws_config]
+  WS_CONFIG_FILE = @config.store[:ws_config]
 
   get '/' do
     erb :index, :layout => false
