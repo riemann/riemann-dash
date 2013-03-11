@@ -1,0 +1,1 @@
+irb -r ./sh/env.rb
