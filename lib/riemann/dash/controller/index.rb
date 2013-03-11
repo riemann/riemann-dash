@@ -1,4 +1,4 @@
-class Riemann::Dash
+class Riemann::Dash::App
   require 'multi_json'
   require 'fileutils'
   require 'set'

@@ -1,4 +1,4 @@
 module Riemann; end
-class Riemann::Dash
+module Riemann::Dash
   VERSION = '0.2.2'
 end
