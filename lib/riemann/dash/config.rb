@@ -42,13 +42,19 @@ class Riemann::Dash::Config
   end
 
   # Load controllers.
+  def load_controllers_from(dir)
+    sorted_controller_list(dir).each do |r|
+      require r
+    end
+  end
+
   # Controllers can be regular old one-file-per-class, but
   # if you prefer a little more modularity, this method will allow you to
   # define all controller methods in their own files.  For example, get
   # "/posts/*/edit" can live in controller/posts/_/edit.rb. The sorting
   # system provided here requires files in the correct order to handle
   # wildcards appropriately.
-  def load_controllers_from(dir)
+  def sorted_controller_list(dir)
     rbs = []
     Find.find(
       File.expand_path(dir)
@@ -84,10 +90,6 @@ class Riemann::Dash::Config
           throw :x, 0
         end
       end
-    end
-
-    rbs.each do |r|
-      require r
     end
   end
 
