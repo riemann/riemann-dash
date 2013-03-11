@@ -28,6 +28,16 @@ class Riemann::Dash::Config
     store[:ws_config]
   end
 
+  # backwards compatible forwarder to store-ivar
+  def [](k)
+    store[k]
+  end
+
+  def []=(k,v)
+    store[k] = v
+  end
+
+
   # Executes the configuration file.
   def load_config(path)
     self.config_path = path
@@ -107,7 +117,6 @@ class Riemann::Dash::Config
 
   require 'multi_json'
   require 'fileutils'
-  require 'set'
 
 
   def read_ws_config

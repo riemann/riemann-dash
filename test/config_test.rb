@@ -92,4 +92,15 @@ describe "Riemann::Dash::Config" do
       end
     end
   end
+
+  describe "backwards compatible :[] and :[]= forwarders to `store` variable" do
+    it "reading works" do
+      @config[:ws_config].must_match %r{lib/riemann/config/config.json}
+    end
+
+    it "writing works" do
+      @config[:ws_config] = "something"
+      @config[:ws_config].must_match %r{something}
+    end
+  end
 end
