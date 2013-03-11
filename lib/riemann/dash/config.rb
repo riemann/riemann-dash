@@ -1,10 +1,18 @@
 class Riemann::Dash::Config
   attr_accessor :config_path
   attr_accessor :store
-  def initialize(config_path)
-    @config_path = config_path
-    @store       = {}
+
+  def initialize
+    self.store = {}
     setup_default_values
+  end
+
+  def self.instance
+    @instance ||= Riemann::Dash::Config.new
+  end
+
+  def self.reset!
+    @instance = nil
   end
 
   def setup_default_values
@@ -16,9 +24,13 @@ class Riemann::Dash::Config
     })
   end
 
+  def ws_config_file
+    store[:ws_config]
+  end
 
   # Executes the configuration file.
-  def load_config
+  def load_config(path)
+    self.config_path = path
     begin
       Riemann::Dash::App.instance_eval File.read(config_path)
       true
@@ -26,7 +38,6 @@ class Riemann::Dash::Config
       false
     end
   end
-
 
   def load_controllers
     store[:controllers].each { |d| load_controllers_from(d) }
@@ -93,4 +104,41 @@ class Riemann::Dash::Config
     end
   end
 
+
+  require 'multi_json'
+  require 'fileutils'
+  require 'set'
+
+
+  def read_ws_config
+    if File.exists? ws_config_file
+      File.read(ws_config_file)
+    else
+      MultiJson.encode({})
+    end
+  end
+
+  def update_ws_config(update)
+    update = MultiJson.decode(update)
+    # Read old config
+    if File.exists? ws_config_file
+      old = MultiJson.decode File.read(ws_config_file)
+    else
+      old = {}
+    end
+
+    new_config = {}
+
+    # Server
+    new_config['server'] = update['server'] or old['server']
+
+    p update['workspaces']
+    new_config['workspaces'] = update['workspaces'] or old['workspaces']
+
+    # Save new config
+    FileUtils.mkdir_p 'config'
+    File.open(ws_config_file, 'w') do |f|
+      f.write(MultiJson.encode(new_config))
+    end
+  end
 end
