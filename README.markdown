@@ -39,3 +39,9 @@ Releasing
 ==========
     $ rake build
     $ rake release
+
+REPL
+====
+    $ sh/c
+    > irb :001 > Riemann::Dash::VERSION
+    > => "0.2.2"
