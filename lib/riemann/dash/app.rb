@@ -12,6 +12,10 @@ module Riemann
         Riemann::Dash::Config.instance
       end
 
+      def config
+        self.class.config
+      end
+
       def self.load(filename)
         filename ||= 'config.rb'
         unless config.load_config(filename)
