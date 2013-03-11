@@ -36,4 +36,17 @@ describe "Riemann::Dash::Config" do
     end
 
   end
+
+  describe :load_controllers do
+
+  end
+
+  describe :setup_views do
+
+  end
+
+
+  describe :setup_public_dir do
+
+  end
 end

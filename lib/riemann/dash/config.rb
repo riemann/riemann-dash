@@ -27,6 +27,20 @@ class Riemann::Dash::Config
     end
   end
 
+
+  def load_controllers
+    store[:controllers].each { |d| load_controllers_from(d) }
+  end
+
+  def setup_views
+    Riemann::Dash::App.set :views, File.expand_path(store[:views])
+  end
+
+  def setup_public_dir
+    require 'riemann/dash/rack/static'
+    Riemann::Dash::App.use Riemann::Dash::Static, :root => store[:public]
+  end
+
   # Load controllers.
   # Controllers can be regular old one-file-per-class, but
   # if you prefer a little more modularity, this method will allow you to
@@ -34,7 +48,7 @@ class Riemann::Dash::Config
   # "/posts/*/edit" can live in controller/posts/_/edit.rb. The sorting
   # system provided here requires files in the correct order to handle
   # wildcards appropriately.
-  def self.load_controllers(dir)
+  def load_controllers_from(dir)
     rbs = []
     Find.find(
       File.expand_path(dir)
