@@ -9,17 +9,12 @@ module Riemann
       require 'sass'
 
       def self.config
-        @config ||= Riemann::Dash::Config.new("")
-      end
-
-      def self.setup_config(config_path)
-        @config = Riemann::Dash::Config.new(config_path)
+        Riemann::Dash::Config.instance
       end
 
       def self.load(filename)
         filename ||= 'config.rb'
-        setup_config(filename)
-        unless config.load_config
+        unless config.load_config(filename)
           # Configuration failed; load a default view.
           puts "No configuration loaded; using defaults."
         end
