@@ -35,6 +35,11 @@ Development
     $ cd riemann-dash
     $ bundle
 
+Testing
+=======
+    # run tests
+    $ sh/test
+
 Releasing
 ==========
     $ rake build
