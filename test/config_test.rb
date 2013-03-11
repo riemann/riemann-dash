@@ -88,12 +88,7 @@ describe "Riemann::Dash::Config" do
       it "pretty-prints the config" do
         @config.store[:ws_config] = "test/tmp/config.json"
         @config.update_ws_config("{\"server\":\"10.10.10.10\",\"workspaces\":[]}")
-        File.read("test/tmp/config.json").must_equal "{
-  \"server\": \"10.10.10.10\",
-  \"workspaces\": [
-
-  ]
-}"
+        File.read("test/tmp/config.json").must_equal File.read("test/fixtures/ws_config/pretty_printed_config.json")
       end
     end
   end
