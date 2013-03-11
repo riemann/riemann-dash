@@ -120,6 +120,7 @@ class Riemann::Dash::Config
 
   def update_ws_config(update)
     update = MultiJson.decode(update)
+
     # Read old config
     if File.exists? ws_config_file
       old = MultiJson.decode File.read(ws_config_file)
@@ -132,13 +133,13 @@ class Riemann::Dash::Config
     # Server
     new_config['server'] = update['server'] or old['server']
 
-    p update['workspaces']
+    #p update['workspaces']
     new_config['workspaces'] = update['workspaces'] or old['workspaces']
 
     # Save new config
-    FileUtils.mkdir_p 'config'
+    FileUtils.mkdir_p File.dirname(ws_config_file)
     File.open(ws_config_file, 'w') do |f|
-      f.write(MultiJson.encode(new_config))
+      f.write(MultiJson.encode(new_config, :pretty => true))
     end
   end
 end

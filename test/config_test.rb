@@ -19,6 +19,12 @@ describe "Riemann::Dash::Config" do
       @config.load_config("test/fixtures/config/basic_config.rb")
       Riemann::Dash::App.settings.settings_loaded.must_equal "yes"
     end
+
+    it "will apply settings from file to self" do
+      @config.store[:views].wont_equal "/some/path/to/views"
+      @config.load_config("test/fixtures/config/basic_config.rb")
+      @config.store[:views].must_equal "/some/path/to/views"
+    end
   end
 
   describe :setup_default_values do
@@ -57,6 +63,10 @@ describe "Riemann::Dash::Config" do
   end
 
   describe "workspace config" do
+    before do
+      FileUtils.rm_rf "test/tmp/"
+    end
+
     describe :read_ws_config do
       it "retuns hash for empty configs" do
         @config.read_ws_config.must_equal "{}"
@@ -70,7 +80,21 @@ describe "Riemann::Dash::Config" do
     end
 
     describe :update_ws_config do
+      it "works" do
+        @config.store[:ws_config] = "test/tmp/config.json"
+        @config.update_ws_config("{\"server\":\"10.10.10.10\",\"workspaces\":[]}")
+      end
 
+      it "pretty-prints the config" do
+        @config.store[:ws_config] = "test/tmp/config.json"
+        @config.update_ws_config("{\"server\":\"10.10.10.10\",\"workspaces\":[]}")
+        File.read("test/tmp/config.json").must_equal "{
+  \"server\": \"10.10.10.10\",
+  \"workspaces\": [
+
+  ]
+}"
+      end
     end
   end
 end
