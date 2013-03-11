@@ -1,7 +1,19 @@
 class Riemann::Dash::Config
   attr_accessor :config_path
+  attr_accessor :store
   def initialize(config_path)
     @config_path = config_path
+    @store       = {}
+    setup_default_values
+  end
+
+  def setup_default_values
+    store.merge!({
+      :controllers => [File.join(File.dirname(__FILE__), 'controller')],
+      :views       => File.join(File.dirname(__FILE__), 'views'),
+      :ws_config   => File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'config.json')),
+      :public      => File.join(File.dirname(__FILE__), 'public')
+    })
   end
 
 
