@@ -34,3 +34,8 @@ Development
     $ git clone git://github.com/mindreframer/riemann-dash.git
     $ cd riemann-dash
     $ bundle
+
+Releasing
+==========
+    $ rake build
+    $ rake release
