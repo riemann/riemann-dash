@@ -25,3 +25,12 @@ Dash class, and hence, all Sinatra configuration.
 set :port, 6000 # HTTP server on port 6000
 config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
+
+
+
+Development
+===========
+
+    $ git clone git://github.com/mindreframer/riemann-dash.git
+    $ cd riemann-dash
+    $ bundle
