@@ -11,7 +11,7 @@ config[:controllers] = ["#{riemann_src}/controller"]
 config[:views] = "#{riemann_src}/views"
 
 # Specify a custom path to your workspace config.json
-config[:ws_config] = "#{riemann_base}/config/config.json"
+config[:ws_config] = "#{riemann_base}/config/config.json'
 
 # Serve static files from this directory
 config[:public] = "#{riemann_src}/public"
