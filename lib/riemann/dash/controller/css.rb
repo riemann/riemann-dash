@@ -1,4 +1,4 @@
-class Riemann::Dash
+class Riemann::Dash::App
   get '/css' do
     scss :css, :layout => false
   end

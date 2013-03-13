@@ -7,8 +7,8 @@ Get started
 ==========
 
 ``` bash
-gem install riemann-dash
-riemann-dash
+    $ gem install riemann-dash
+    $ riemann-dash
 ```
 
 Then open http://localhost:4567 in a browser. Riemann-dash will connect to the local host (relative to your browser) by default, and show you a small manual.
@@ -25,3 +25,28 @@ Dash class, and hence, all Sinatra configuration.
 set :port, 6000 # HTTP server on port 6000
 config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
+
+
+
+Development
+===========
+
+    $ git clone git://github.com/aphyr/riemann-dash.git
+    $ cd riemann-dash
+    $ bundle
+
+Testing
+=======
+    # run tests
+    $ sh/test
+
+Releasing
+==========
+    $ rake build
+    $ rake release
+
+REPL
+====
+    $ sh/c
+    > irb :001 > Riemann::Dash::VERSION
+    > => "0.2.2"

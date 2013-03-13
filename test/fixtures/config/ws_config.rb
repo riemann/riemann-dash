@@ -1,0 +1,1 @@
+config.store[:ws_config] = "test/fixtures/ws_config/dummy_config.json"
