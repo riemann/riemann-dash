@@ -19,7 +19,7 @@ class Riemann::Dash::Config
     store.merge!({
       :controllers => [File.join(File.dirname(__FILE__), 'controller')],
       :views       => File.join(File.dirname(__FILE__), 'views'),
-      :ws_config   => File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'config.json')),
+      :ws_config   => File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..', 'config', 'config.json')),
       :public      => File.join(File.dirname(__FILE__), 'public')
     })
   end

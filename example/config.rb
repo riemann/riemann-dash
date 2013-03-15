@@ -2,7 +2,7 @@
 set  :port, 4567
 
 riemann_base = '.'
-riemann_src = "${riemann_base}/lib/riemann/dash"
+riemann_src = "#{riemann_base}/lib/riemann/dash"
 
 # Add custom controllers in controller/
 config.store[:controllers] = ["#{riemann_src}/controller"]

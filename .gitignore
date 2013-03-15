@@ -5,4 +5,5 @@ pkg/
 .DS_Store
 .*.swp
 *.log
+/test/tmp/
 /config
