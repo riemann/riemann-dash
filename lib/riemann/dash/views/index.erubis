@@ -13,9 +13,9 @@
   <!-- begin third party dependencies -->
   <script src="/vendor/smoothie.js"></script>
   <script src="/vendor/lodash.min.js"></script>
-  <script src="/vendor/jquery/jquery-1.7.2.min.js"></script>
+  <script src="/vendor/jquery/jquery-1.9.1.min.js"></script>
   <script src="/vendor/jquery/jquery-ui-1.9.0.custom.min.js"></script>
-  <script src="/vendor/jquery/jquery.simplemodal.1.4.3.min.js"></script>
+  <script src="/vendor/jquery/jquery.simplemodal.1.4.4.min.js"></script>
   <script src="/vendor/jquery/jquery.quickfit.js"></script>
   <script src="/vendor/toastr/toastr.js"></script>
   <script> // turn underscore templates into mustache style templates
