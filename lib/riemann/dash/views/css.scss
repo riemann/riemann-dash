@@ -391,3 +391,42 @@ h2 {
     width: 1px;
   }
 }
+
+.time-series-container {
+  .title {
+    font-weight: 700;
+    font-size: 1.5em;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    z-index: 10;
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+    padding: 2px;
+    display: block;
+  }
+  .legend {
+    height: 100%;
+    font-size: 16px;
+    text-shadow: hsl(0, 0%, 95%) 0px 0px 1px;
+    color: hsl(0, 0%, 5%);
+    position: absolute;
+    bottom: 0px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    @include vendor-prefix(flex-flow, column wrap);
+    @include vendor-prefix(align-content, flex-start);
+    @include vendor-prefix(justify-content, flex-start);
+    @include vendor-prefix(align-items, stretch);
+  }
+  .event-legend {
+    padding: 4px;
+    @include vendor-prefix(flex, 1 1 auto);
+    @include vendor-prefix(transition, all 0.3s ease-out);
+  }
+  .event-legend:hover {
+    background-color: hsla(0, 0%, 100%, .8) !important;
+  }
+
+}
