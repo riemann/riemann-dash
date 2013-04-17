@@ -6,7 +6,7 @@ require 'riemann/dash/version'
 Gem::Specification.new do |gem|
   gem.rubyforge_project = 'riemann-dash'
 
-  gem.name          = "reslike-dash"
+  gem.name          = "riemann-dash"
   gem.version       = Riemann::Dash::VERSION
   gem.authors       = ["Kyle Kingsbury"]
   gem.email         = ['aphyr@aphyr.com']
