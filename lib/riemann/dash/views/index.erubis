@@ -21,9 +21,9 @@
   <script src="/vendor/toastr/toastr.js"></script>
   <script> // turn underscore templates into mustache style templates
     _.templateSettings = {
-      evaluate    : /\{\%([\s\S]+?)\%\}/g, // {%  eval(js);  %}
-      interpolate : /\{\{([\s\S]+?)\}\}/g  // {{ interpolate }}
-      escape      : /\{\{-([\s\S]+?)\}\}/g  // {{ interpolate }}
+      evaluate    : /\{\%([\s\S]+?)\%\}/g,  // {%  eval(js);  %}
+      interpolate : /\{\{([\s\S]+?)\}\}/g,  // {{ interpolate }}
+      "escape"    : /\{\{-([\s\S]+?)\}\}/g  // {{- escape }}
     };
   </script>
   <!-- end third party deps -->
