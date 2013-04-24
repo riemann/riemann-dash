@@ -23,6 +23,7 @@
     _.templateSettings = {
       evaluate    : /\{\%([\s\S]+?)\%\}/g, // {%  eval(js);  %}
       interpolate : /\{\{([\s\S]+?)\}\}/g  // {{ interpolate }}
+      escape      : /\{\{-([\s\S]+?)\}\}/g  // {{ interpolate }}
     };
   </script>
   <!-- end third party deps -->
