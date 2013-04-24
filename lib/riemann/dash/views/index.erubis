@@ -28,6 +28,7 @@
   <!-- end third party deps -->
 
   <script src="/util.js"></script>
+  <script src="/strings.js"></script>
   <script src="/format.js"></script>
   <script src="/profile.js"></script>
   <script src="/clock.js"></script>
