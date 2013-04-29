@@ -15,7 +15,7 @@
   <script src="/vendor/lodash.min.js"></script>
   <script src="/vendor/jquery/jquery-1.9.1.min.js"></script>
   <script src="/vendor/backbone.js"></script>
-  <script src="/vendor/jquery/jquery-ui-1.9.0.custom.min.js"></script>
+  <script src="/vendor/jquery/jquery-ui-1.10.2.custom.min.js"></script>
   <script src="/vendor/jquery/jquery.simplemodal.1.4.4.min.js"></script>
   <script src="/vendor/jquery/jquery.quickfit.js"></script>
   <script src="/vendor/toastr/toastr.js"></script>
