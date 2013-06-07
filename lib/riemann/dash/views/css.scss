@@ -428,5 +428,25 @@ h2 {
   .event-legend:hover {
     background-color: hsla(0, 0%, 100%, .8) !important;
   }
+}
 
+.flot.view {
+  .legend {
+    font-size: 13px;
+    color: #000;
+    opacity: 1;
+  }
+  
+  h2 {
+    height: 28px;
+    font-size: 24px;
+  }
+
+  .container {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }

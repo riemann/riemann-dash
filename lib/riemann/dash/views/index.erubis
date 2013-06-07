@@ -19,6 +19,11 @@
   <script src="/vendor/jquery/jquery.simplemodal.1.4.4.min.js"></script>
   <script src="/vendor/jquery/jquery.quickfit.js"></script>
   <script src="/vendor/toastr/toastr.js"></script>
+  <script src="/vendor/flot/jquery.colorhelpers.min.js"></script>
+  <script src="/vendor/flot/jquery.flot.js"></script>
+  <script src="/vendor/flot/jquery.flot.canvas.min.js"></script>
+  <script src="/vendor/flot/jquery.flot.time.min.js"></script>
+  <!--  <script src="/vendor/flot/jquery.flot.stack.min.js"></script>-->
   <script> // turn underscore templates into mustache style templates
     _.templateSettings = {
       evaluate    : /\{\%([\s\S]+?)\%\}/g,  // {%  eval(js);  %}
@@ -39,6 +44,7 @@
   <script src="/toolbar.js"></script>
   <script src="/view.js"></script>
   <script src="/views/timeseries.js"></script>
+  <script src="/views/flot.js"></script>
   <script src="/views/title.js"></script>
   <script src="/views/help.js"></script>
   <script src="/views/gauge.js"></script>
