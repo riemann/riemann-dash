@@ -176,6 +176,10 @@ html,table {
   background: $orange;
   color: #000;
 }
+.state.expired {
+  background: $purple;
+  color: #000;
+}
 
 .view .query {
   display: block;
