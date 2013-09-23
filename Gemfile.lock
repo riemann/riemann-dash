@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reslike-dash (0.2.2)
+    riemann-dash (0.2.5)
       erubis (>= 2.7.0)
       multi_json (= 1.3.6)
       riemann-client (>= 0.0.7)
@@ -25,23 +25,23 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
-    rack-protection (1.4.0)
+    rack-protection (1.5.0)
       rack
-    riemann-client (0.0.8)
+    riemann-client (0.2.2)
       beefcake (>= 0.3.5)
       mtrc (>= 0.0.4)
       trollop (>= 1.16.2)
     sass (3.2.7)
-    sinatra (1.3.5)
+    sinatra (1.3.6)
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
     slop (3.4.3)
-    thin (1.5.0)
+    thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    tilt (1.3.5)
+    tilt (1.4.1)
     trollop (2.0)
 
 PLATFORMS
@@ -49,4 +49,4 @@ PLATFORMS
 
 DEPENDENCIES
   pry
-  reslike-dash!
+  riemann-dash!
