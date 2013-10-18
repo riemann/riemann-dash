@@ -142,6 +142,9 @@ class Riemann::Dash::Config
     # Server
     new_config['server'] = update['server'] or old['server']
 
+    # Server Type
+    new_config['server_type'] = update['server_type'] or old['server_type']
+
     #p update['workspaces']
     new_config['workspaces'] = update['workspaces'] or old['workspaces']
 
