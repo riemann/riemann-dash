@@ -168,11 +168,11 @@ html,table {
   background: $green;
   color: #000;
 }
-.state.warning, .bar.warning {
+.state.warning, .state.warn, .bar.warning, .bar.warn {
   background: $amber;
   color: #000;
 }
-.state.critical, .state.failure, .bar.critical, .bar.failure {
+.state.critical, .state.failure, .state.err, .bar.critical, .bar.failure, .bar.err {
   background: $orange;
   color: #000;
 }
