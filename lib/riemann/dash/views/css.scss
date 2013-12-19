@@ -374,6 +374,10 @@ h2 {
     position: absolute;
     width: 100%;
     border-spacing: 3px;
+    
+    th {
+      text-align: right;
+    }
 
     thead {
       margin: 0;
@@ -384,7 +388,7 @@ h2 {
         position: relative;
         top: 3px;
         vertical-align: bottom;
-        text-align: right;
+        text-align: left;
       }
     }
   }
