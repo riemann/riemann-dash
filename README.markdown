@@ -22,7 +22,8 @@ directory: config.rb. That file can override any configuration options on the
 Dash class, and hence, all Sinatra configuration.
 
 ``` ruby
-set :port, 6000 # HTTP server on port 6000
+set :port, 6000      # HTTP server on port 6000
+set :bind, "1.2.3.4" # Bind to a different interface
 config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
 
