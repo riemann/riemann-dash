@@ -183,6 +183,7 @@ a {
 }
 
 .state {
+  overflow: hidden;
   @include vendor-prefix(transition, all 0.3s);
   &.unknown {
     border: none;
@@ -329,7 +330,7 @@ h2 {
 
 .metric {
   font-weight: bolder;
-  text-align: right;
+  text-align: left;
 }
 
 .title h2 {
