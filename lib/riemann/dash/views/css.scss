@@ -34,10 +34,14 @@ body {
 }
 
 html,table {
-  font-family: "Avenir",'Arial Rounded MT Bold','TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family: "Avenir",'Segoe UI','Arial Rounded MT Bold','TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight:400;
   font-stretch:normal;
   font-size: 14px;
+}
+th {
+  font-weight: normal;
+  white-space: nowrap;
 }
 td {
   border-radius: 3px;
@@ -356,7 +360,7 @@ h2 {
     margin-top: -0.5em;
     text-align: center;
     color: #fff;
-    font-family: 'Comfortaa', Avenir,'Arial Rounded MT Bold', sans-serif;
+    font-family: 'Comfortaa', Avenir,'Ubuntu Mono Regular','Arial Rounded MT Bold', sans-serif;
     line-height: 1;
   }
 }
@@ -403,7 +407,6 @@ h2 {
     
     th {
       text-align: right;
-      font-weight: normal;
     }
 
     thead {
