@@ -1,18 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Comfortaa);
+
 /* Colors! */
-$bright-green: #2CFE40;
-$dark-green: #059F00;
-$fuschia: #FD47B7;
-$purple: #7C2CFF;
-$orange: #FF6513;
-$amber: #FFC712;
-$light-blue: #2CCCFE;
-$blue: #2C55FF;
-$dark-grey: #1F1F1F;
-$light-grey: #ccc;
-$off-white: #dedede;
-$grey: #888;
-$green: #06FA23;
-$yellow: #FEF206;
+
+$c-teal-dark: #00223A;
+$c-teal: #002D49;
+$c-teal-lighter: #00426B;
+$c-teal-light : #0F87BC;
+$c-orange: #FF6513;
+$c-amber: #D3B803;
+$c-red: #D41430;
+$c-green: #00BB63;
 
 @mixin vendor-prefix($name, $argument) {
   #{$name}: $argument;
@@ -32,34 +29,52 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #fff;
-  color: $dark-grey;
+  background: $c-teal-dark;
+  color: #fff;
 }
 
 html,table {
-  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family: "Avenir",'Arial Rounded MT Bold','TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight:400;
   font-stretch:normal;
   font-size: 14px;
 }
+td {
+  border-radius: 3px;
+  background-color: $c-teal;
+  background: linear-gradient(-45deg, $c-teal-dark 6px, $c-teal-lighter 7px, $c-teal-dark 8px);
+  background-size: 10px 10px;
+  border: 1px solid $c-teal-lighter;
+}
+a {
+  color: #fff;
+  &:link {
+    color: $c-teal-light;
+    @include vendor-prefix(transition, all 0.2s);
+  }
+  &:hover {
+    color: #fff;
+  }
+  &:active {
+    color: $c-red;
+  }
+}
 
 #toolbar {
-  height: 28px;
+  height: 2.8em;
   overflow: hidden;
   position: absolute;
   top: 3px;
   left: 3px;
   right: 3px;
   font-size: 12px;
+  border-bottom: 1px solid #002D49;
  
   input {
-    background: $off-white;
-    border: 1px solid $dark-grey;
+    border: 1px solid $c-teal;
     margin: 3px;
     padding: 3px 6px;
-  }
-  input:hover {
-    background: lighten($off-white, 5%);
+    font-size: 12px;
   }
 
   .server {
@@ -72,27 +87,33 @@ html,table {
     float: right;
     width: 100px;
     padding: 4px 6px 3px 6px;
-    border: 1px solid $dark-grey;
+    background: $c-teal;
     span {
       z-index: -1;
     }
     .bar {
       border-radius: 0;
-      background: rgba(0,0,0,0.25);
+      background: rgba($c-amber,0.25);
       width: 1%;
+    }
+    .load5 {
+      background: rgba($c-teal-light,0.25);
     }
   }
 
   .button {
     display: inline-block;
     margin: 3px;
-    padding: 3px 6px;
-    border: 1px solid $light-grey;
-    background: $off-white;
+    padding: 3px 8px;
+    border: 1px solid $c-teal-light;
+    border-radius: 3px;
     cursor: pointer;
-  }
-  .button:hover {
-    background: lighten($off-white, 5%);
+    vertical-align: middle;
+    @include vendor-prefix(transition, all 0.2s);
+    &:hover {
+      border-color: $c-red;
+      color: $c-red;
+    }
   }
 
   .pager {
@@ -113,12 +134,8 @@ html,table {
       }
     }
 
-    li:hover {
-      background: lighten($off-white, 10%);
-    }
-
     li.current {
-      border-color: $dark-grey;
+      background: darken($c-teal-light, 20%);
 
       .delete {
         display: inline;
@@ -132,7 +149,7 @@ html,table {
   position: absolute;
   left: 3px;
   right: 3px;
-  top: 28px;
+  top: 2.8em;
   bottom: 3px;
 }
 
@@ -145,9 +162,10 @@ html,table {
   left: 0;
   right: 0;
   margin: 3px;
-  padding: 3px;
-  background: $light-grey;
+  padding: 20px;
+  background: $c-teal;
   border-radius: 3px;
+  overflow: auto;
 }
 
 .bar {
@@ -161,20 +179,25 @@ html,table {
 }
 
 .state {
-  @include vendor-prefix(transition, all 0.3s linear);
-}
-
-.state.ok, .state.okay, .bar.ok, .bar.okay {
-  background: $green;
-  color: #000;
-}
-.state.warning, .state.warn, .bar.warning, .bar.warn {
-  background: $amber;
-  color: #000;
-}
-.state.critical, .state.failure, .state.err, .bar.critical, .bar.failure, .bar.err {
-  background: $orange;
-  color: #000;
+  @include vendor-prefix(transition, all 0.3s);
+  &.unknown {
+    border: none;
+  }
+  &.ok, &.okay, .bar.ok, .bar.okay {
+    background: $c-green;
+    color: #000;
+    border: none;
+  }
+  &.warning, &.warn, .bar.warning, .bar.warn {
+    background: $c-amber;
+    color: #000;
+    border: none;
+  }
+  &.critical, &.failure, &.err, .bar.critical, .bar.failure, .bar.err {
+    background: $c-red;
+    color: #000;
+    border: none;
+  }
 }
 
 .view .query {
@@ -200,40 +223,37 @@ html,table {
   bottom: 0;
 }
 
-.log-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.log-table thead {
-  text-align: left;
-}
-
-.log-table tbody {
-}
-
-.log-table td {
-  border-bottom: 1px solid #eee;
-  vertical-align: top;
-  padding: 3px;
-  white-space: pre;
-}
-.log-table td .bar {
-  margin: -3px;
-  padding: 3px;
+.log-table {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    text-align: left;
+  }
+  td {
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    padding: 3px;
+    white-space: pre;
+  }
+  .bar {
+    margin: -3px;
+    padding: 3px;
+  }
 }
 
 .chart {
   width: 140px;
   border: 1px solid #ccc;
-}
-.chart td {
-  min-width: 40px;
-  overflow: hidden;
-}
-.chart th {
-  width: 1px;
-  text-align: left;
+  td {
+    min-width: 40px;
+    overflow: hidden;
+  }
+  th {
+    width: 1px;
+    text-align: left;
+  }
 }
 
 .timeSeries rect {
@@ -273,17 +293,17 @@ html,table {
   border-radius: 4px;
   min-width: 400px;
   min-height: 400px;
-}
-#simplemodal-container a.modalCloseImg {
-  background:url(/x.png) no-repeat; /* adjust url as required */
-  width:25px;
-  height:29px;
-  display:inline;
-  z-index:3200;
-  position:absolute;
-  top:-10px;
-  right:-10px;
-  cursor:pointer;
+  a.modalCloseImg {
+    background:url(/x.png) no-repeat; /* adjust url as required */
+    width:25px;
+    height:29px;
+    display:inline;
+    z-index:3200;
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    cursor:pointer;
+  }
 }
 
 textarea.query {
@@ -314,6 +334,7 @@ h2 {
   right: 3px;
   top: 3px;
   bottom: 3px;
+  text-align: center
 }
 
 .gauge {
@@ -329,10 +350,14 @@ h2 {
   .value {
     position: absolute;
     height: 75%;
-    top: 0;
+    top: 50%;
     right: 0;
     width: 100%;
-    text-align: right;
+    margin-top: -0.5em;
+    text-align: center;
+    color: #fff;
+    font-family: 'Comfortaa', Avenir,'Arial Rounded MT Bold', sans-serif;
+    line-height: 1;
   }
 }
 
@@ -362,10 +387,11 @@ h2 {
     margin: 0;
     padding: 0;
     position: static;
+    text-align: right;
 
     .metric {
       padding: 3px;
-      font-weight: normal;
+      font-weight: bold;
     }
   }
 
@@ -377,6 +403,7 @@ h2 {
     
     th {
       text-align: right;
+      font-weight: normal;
     }
 
     thead {
@@ -401,8 +428,7 @@ h2 {
 .time-series-container {
   .title {
     font-weight: 700;
-    font-size: 1.5em;
-    background-color: hsla(0, 0%, 100%, 0.8);
+    font-size: 2em;
     z-index: 10;
     position: absolute;
     bottom: -5px;
@@ -412,9 +438,8 @@ h2 {
   }
   .legend {
     height: 100%;
-    font-size: 16px;
-    text-shadow: hsl(0, 0%, 95%) 0px 0px 1px;
-    color: hsl(0, 0%, 5%);
+    font-size: 12px;
+    color: hsla(0, 0%, 100%, 0.5);
     position: absolute;
     bottom: 0px;
     display: -webkit-flex;
@@ -429,9 +454,10 @@ h2 {
   .event-legend {
     padding: 4px;
     @include vendor-prefix(flex, 1 1 auto);
-    @include vendor-prefix(transition, all 0.3s ease-out);
+    @include vendor-prefix(transition, all 0.3s);
   }
   .event-legend:hover {
+    color: $c-teal-dark;
     background-color: hsla(0, 0%, 100%, .8) !important;
   }
 }
