@@ -47,6 +47,7 @@
   <script src="views/timeseries.js"></script>
   <script src="views/flot.js"></script>
   <script src="views/title.js"></script>
+  <script src="views/log.js"></script>
   <script src="views/help.js"></script>
   <script src="views/gauge.js"></script>
   <script src="views/grid.js"></script>

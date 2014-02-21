@@ -442,7 +442,7 @@ h2 {
     color: #000;
     opacity: 1;
   }
-  
+
   h2 {
     height: 28px;
     font-size: 24px;
@@ -454,5 +454,32 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+.log.view {
+  .scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    text-align: left;
+  }
+
+  td, th {
+    padding: 2px;
+    vertical-align: top;
+    border-bottom: 1px solid #eee;
   }
 }
