@@ -5,16 +5,16 @@ class Riemann::Dash::App
 
   get '/config', :provides => 'json' do
     content_type "application/json"
-    Riemann::Dash::BrowserConfig.read config
+    Riemann::Dash::BrowserConfig.read
   end
 
   post '/config' do
     # Read update
     request.body.rewind
-    Riemann::Dash::BrowserConfig.update config, request.body.read
+    Riemann::Dash::BrowserConfig.update request.body.read
 
     # Return current config
     content_type "application/json"
-    Riemann::Dash::BrowserConfig.read config
+    Riemann::Dash::BrowserConfig.read
   end
 end
