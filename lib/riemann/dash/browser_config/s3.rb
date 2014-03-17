@@ -7,8 +7,7 @@ class Riemann::Dash::BrowserConfig::S3
     @path   = path
     @config = config
 
-    @storage = Fog::Storage.new(:region => config[:region],
-                                :provider => 'AWS')
+    @storage = Fog::Storage::AWS.new(config)
   end
 
   def read
