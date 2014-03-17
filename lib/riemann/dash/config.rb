@@ -64,7 +64,7 @@ class Riemann::Dash::Config
     Riemann::Dash::App.use Riemann::Dash::Static, :root => store[:public]
   end
 
-  def setup_ws_backend
+  def setup_storage_backend
     uri = URI.parse(ws_config_file)
     backend = case uri.scheme
             when "s3"
