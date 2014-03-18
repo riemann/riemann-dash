@@ -336,6 +336,16 @@ h2 {
   }
 }
 
+.list {
+   ul {
+       display: inline-block;
+       position: relative;
+   }
+   ul li {
+       background: #cacaca;
+   }
+}
+
 .grid {
   white-space: nowrap;
 
