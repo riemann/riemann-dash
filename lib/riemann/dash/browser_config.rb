@@ -3,6 +3,14 @@ module Riemann::Dash::BrowserConfig
   require 'fileutils'
   require 'pp'
 
+  def self.backend
+    @backend
+  end
+
+  def self.backend=(backend)
+    @backend = backend
+  end
+
   # TODO: this is gonna take significant restructuring of the dashboard itself,
   # but we should move to http://arxiv.org/abs/1201.1784 or equivalent CRDTs.
 
@@ -54,35 +62,11 @@ module Riemann::Dash::BrowserConfig
             'workspaces'  => merge_workspaces(a['workspaces'], b['workspaces'])
   end
 
-
-  def self.read(config)
-    if File.exists? config.ws_config_file
-      File.open(config.ws_config_file, 'r') do |f|
-        f.flock File::LOCK_SH
-        f.read
-      end
-    else
-      MultiJson.encode({})
-    end
+  def self.read
+    backend.read
   end
 
-  def self.update(config, update)
-    update = MultiJson.decode update
-
-    # Read old config
-    old = MultiJson.decode read(config)
-
-    new = merge_configs update, old
-
-    # Save new config
-    FileUtils.mkdir_p File.dirname(config.ws_config_file)
-    begin
-      File.open(config.ws_config_file, File::RDWR|File::CREAT, 0644) do |f|
-        f.flock File::LOCK_EX
-        f.write(MultiJson.encode(new, :pretty => true))
-        f.flush
-        f.truncate f.pos
-      end
-    end
+  def self.update(update)
+    backend.update(update)
   end
 end

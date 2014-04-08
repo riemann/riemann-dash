@@ -26,6 +26,7 @@ module Riemann
         config.load_controllers
         config.setup_views
         config.setup_public_dir
+        config.setup_storage_backend
       end
     end
   end

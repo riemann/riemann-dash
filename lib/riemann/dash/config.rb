@@ -1,4 +1,6 @@
 class Riemann::Dash::Config
+  require 'uri'
+
   attr_accessor :config_path
   attr_accessor :store
 
@@ -60,6 +62,19 @@ class Riemann::Dash::Config
   def setup_public_dir
     require 'riemann/dash/rack/static'
     Riemann::Dash::App.use Riemann::Dash::Static, :root => store[:public]
+  end
+
+  def setup_storage_backend
+    uri = URI.parse(ws_config_file)
+    backend = case uri.scheme
+            when "s3"
+              Riemann::Dash::BrowserConfig::S3.new(uri.host, uri.path.sub(/^\//, ''), store[:s3_config])
+            when nil, "file"
+              Riemann::Dash::BrowserConfig::File.new(uri.path)
+            else
+              raise Exception.new "Unknown backend for #{ws_config_file}"
+            end
+    Riemann::Dash::BrowserConfig.backend = backend
   end
 
   # Load controllers.
