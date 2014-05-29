@@ -9,6 +9,7 @@
 <body>
   <div id="toolbar"></div>
   <div id="view"></div>
+  <div id="event-pane"></div>
 
   <!-- begin third party dependencies -->
   <script src="vendor/smoothie.js"></script>
@@ -43,6 +44,7 @@
   <script src="keys.js"></script>
   <script src="subs.js"></script>
   <script src="toolbar.js"></script>
+  <script src="eventPane.js"></script>
   <script src="view.js"></script>
   <script src="views/timeseries.js"></script>
   <script src="views/flot.js"></script>

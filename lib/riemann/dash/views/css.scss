@@ -8,9 +8,10 @@ $amber: #FFC712;
 $light-blue: #2CCCFE;
 $blue: #2C55FF;
 $dark-grey: #1F1F1F;
+$grey: #888;
 $light-grey: #ccc;
 $off-white: #dedede;
-$grey: #888;
+$cream: #f6f6f6;
 $green: #06FA23;
 $yellow: #FEF206;
 
@@ -125,6 +126,52 @@ html,table {
         margin-left: 10px;
       }
     }
+  }
+}
+
+#event-pane {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  z-index: 100;
+  background: #fff;
+  border-top: 1px solid $off-white;
+  padding: 3px;
+
+  &.active {
+    box-shadow: 0 0 40px rgba(0,0,0,0.2);
+  }
+
+  * {
+    float: left;
+    padding: 3px;
+  }
+
+  .state {
+    margin: 0 3px;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+
+  .host {
+    font-style: italic;
+  }
+
+  .ttl:before {
+    color: $grey;
+    content: 'ttl ';
+  }
+
+  .tags:before {
+    color: $grey;
+    content: "tags: ";
+  }
+
+  .description {
+    clear: both;
+    white-space: pre-wrap;
   }
 }
 
