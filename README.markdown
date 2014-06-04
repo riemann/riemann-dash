@@ -19,7 +19,8 @@ Configuring
 Riemann-dash takes an optional config file, which you can specify as the first
 command-line argument. If none is given, it looks for a file in the local
 directory: config.rb. That file can override any configuration options on the
-Dash class, and hence, all Sinatra configuration.
+Dash class, and hence, all Sinatra configuration. You'll find a few usage
+examples in "example/config.rb".
 
 ``` ruby
 set :port, 6000      # HTTP server on port 6000
