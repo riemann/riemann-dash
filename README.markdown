@@ -31,7 +31,19 @@ set :bind, "1.2.3.4" # Bind to a different interface
 config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
 
+Putting in production
+=====================
 
+If you expect more than a couple of simultaneous users, you should consider
+running Riemann-dash in a proper application server. The easiest way is to
+install thin or puma. Riemann-dash will automatically use one of them if they
+are present. You'll need the C/C++ compiler, as well as the ruby and openssl
+libraries and headers installed.
+
+``` bash
+    $ gem install riemann-dash thin
+    $ riemann-dash
+```
 
 Development
 ===========
