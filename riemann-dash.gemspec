@@ -21,7 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sass', '>= 3.1.14'
   gem.add_dependency 'thin', '~> 1.6.2'
   gem.add_dependency 'multi_json', '1.3.6'
-  gem.add_dependency 'fog'
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
