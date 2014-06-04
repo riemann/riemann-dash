@@ -11,7 +11,10 @@ Get started
     $ riemann-dash
 ```
 
-Then open http://localhost:4567 in a browser. Riemann-dash will connect to the local host (relative to your browser) by default, and show you a small manual.
+Then open http://localhost:4567 in a browser. Riemann-dash will connect to the
+local host (relative to your browser) by default, and show you a small manual.
+Change the IP address in the top right field to point to your Riemann server's
+websocket port.
 
 Configuring
 ===========
