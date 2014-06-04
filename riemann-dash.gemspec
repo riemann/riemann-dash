@@ -15,7 +15,6 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/aphyr/riemann-dash'
   gem.platform      = Gem::Platform::RUBY
 
-  gem.add_dependency 'riemann-client', '>= 0.0.7'
   gem.add_dependency 'erubis', '>= 2.7.0'
   gem.add_dependency 'sinatra', '~> 1.4.5'
   gem.add_dependency 'sass', '>= 3.1.14'
