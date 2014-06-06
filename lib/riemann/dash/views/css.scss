@@ -135,6 +135,8 @@ html,table {
   right: 0;
   bottom: 0;
   height: auto;
+  max-height: 30%;
+  overflow-y: auto;
   z-index: 100;
   background: #fff;
   border-top: 1px solid $off-white;
