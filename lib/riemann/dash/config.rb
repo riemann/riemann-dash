@@ -68,8 +68,14 @@ class Riemann::Dash::Config
     uri = URI.parse(ws_config_file)
     backend = case uri.scheme
             when "s3"
-              Riemann::Dash::BrowserConfig::S3.new(uri.host, uri.path.sub(/^\//, ''), store[:s3_config])
+              begin
+                require 'riemann/dash/browser_config/s3'
+                Riemann::Dash::BrowserConfig::S3.new(uri.host, uri.path.sub(/^\//, ''), store[:s3_config])
+              rescue LoadError
+                raise Exception.new 'Fog library required to save to S3. Run: "gem install fog"'
+              end
             when nil, "file"
+              require 'riemann/dash/browser_config/file'
               Riemann::Dash::BrowserConfig::File.new(uri.path)
             else
               raise Exception.new "Unknown backend for #{ws_config_file}"

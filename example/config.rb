@@ -15,3 +15,8 @@ config.store[:ws_config] = "#{riemann_base}/config/config.json"
 
 # Serve static files from this directory
 config.store[:public] = "#{riemann_src}/public"
+
+# Save workspace configuration to Amazon S3 (you'll need to have the "fog"
+# gem installed)
+# config.store[:ws_config] = 's3://my-bucket/config.json'
+# config.store[:s3_config] = {:aws_access_key_id => "123ABC", :aws_secret_access_key => "789XYZ"}
