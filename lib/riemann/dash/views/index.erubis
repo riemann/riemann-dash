@@ -26,6 +26,8 @@
   <script src="vendor/flot/jquery.flot.time.min.js"></script>
   <script src="vendor/flot/jquery.flot.stack.min.js"></script>
   <script src="vendor/PriorityQueue.js"></script>
+  <script src="vendor/gauge.min.js"></script>
+  <script src="vendor/jquery.gauge.js"></script>
   <script> // turn underscore templates into mustache style templates
     _.templateSettings = {
       evaluate    : /\{\%([\s\S]+?)\%\}/g,  // {%  eval(js);  %}
