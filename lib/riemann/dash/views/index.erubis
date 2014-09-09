@@ -55,6 +55,7 @@
   <script src="views/list.js"></script>
   <script src="views/help.js"></script>
   <script src="views/gauge.js"></script>
+  <script src="views/dial.js"></script>
   <script src="views/grid.js"></script>
   <script src="dash.js"></script>
 

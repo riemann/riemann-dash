@@ -385,6 +385,26 @@ h2 {
   }
 }
 
+.dial {
+  h2 {
+    position: absolute;
+    height: 25%;
+    width: 75%;
+    bottom: 3px;
+    right: 3px;
+    text-align: right;
+  }
+
+  .value {
+    position: absolute;
+    height: 75%;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
+  }
+}
+
 .list {
    ul {
        display: inline-block;
