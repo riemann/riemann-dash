@@ -37,6 +37,15 @@
   </script>
   <!-- end third party deps -->
 
+  <script> // transform eventPane config options into javascript variables
+<% if config.store[:pane_host_link] %>
+    var pane_host_link = "<%= config.store[:pane_host_link] %>"
+<% end %>
+<% if config.store[:pane_service_link] %>
+    var pane_service_link = "<%= config.store[:pane_service_link] %>"
+<% end %>
+  </script>
+
   <script src="util.js"></script>
   <script src="strings.js"></script>
   <script src="format.js"></script>

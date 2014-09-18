@@ -18,5 +18,13 @@ config.store[:public] = "#{riemann_src}/public"
 
 # Save workspace configuration to Amazon S3 (you'll need to have the "fog"
 # gem installed)
+#
 # config.store[:ws_config] = 's3://my-bucket/config.json'
 # config.store[:s3_config] = {:aws_access_key_id => "123ABC", :aws_secret_access_key => "789XYZ"}
+
+# URLs of the links of the "host" and "service" fields, in the event pane (the
+# box which appears at the bottom of the screen when you click on an event).
+# The {{host}} and {{service}} tags will be replaced by the those of the event.
+#
+# config.store[:pane_host_link] = 'http://dashboard.example.com/'
+# config.store[:pane_service_link] = 'http://dashboard/{{host}}/{{service}}/'
