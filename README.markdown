@@ -45,6 +45,9 @@ libraries and headers installed.
     $ riemann-dash
 ```
 
+Riemann-dash can also run in a web server supporting the Rack interface. An
+example rackup app is found in "example/config.ru".
+
 Development
 ===========
 
