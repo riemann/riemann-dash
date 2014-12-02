@@ -1,7 +1,4 @@
 module Riemann::Dash::BrowserConfig
-  require 'multi_json'
-  require 'fileutils'
-  require 'pp'
 
   def self.backend
     @backend
