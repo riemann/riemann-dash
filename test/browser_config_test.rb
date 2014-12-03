@@ -26,4 +26,43 @@ describe "Riemann::Dash::BrowserConfig" do
       @mock_backend.verify
     end
   end
+
+  describe :merge_configs do
+    before do
+      @first_config = {'server' => 'first_server', 'server_type' => 'first_type'}
+      @second_config = {'server' => 'second_server', 'server_type' => 'second_type'}
+    end
+
+    describe "when merging the server value" do
+      it "prioritises the value from the first config" do
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+
+        assert_equal 'first_server', merged_configs['server']
+      end
+
+      it "uses the value from the second config if no other exists" do
+        @first_config = {}
+
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+
+        assert_equal 'second_server', merged_configs['server']
+      end
+    end
+
+    describe "when merging the server_type value" do
+      it "prioritises the value from the first config" do
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+
+        assert_equal 'first_type', merged_configs['server_type']
+      end
+
+      it "uses the value from the second config if no other exists" do
+        @first_config = {}
+
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+
+        assert_equal 'second_type', merged_configs['server_type']
+      end
+    end
+  end
 end

@@ -1,3 +1,5 @@
+require 'pp'
+
 module Riemann::Dash::BrowserConfig
 
   def self.backend
@@ -24,7 +26,7 @@ module Riemann::Dash::BrowserConfig
   end
 
   private
-  
+
   # TODO: this is gonna take significant restructuring of the dashboard itself,
   # but we should move to http://arxiv.org/abs/1201.1784 or equivalent CRDTs.
 
@@ -63,6 +65,9 @@ module Riemann::Dash::BrowserConfig
     def self.merge_workspaces(as, bs)
       return as unless bs
       return bs unless as
+
+      pp as
+      pp bs
       merge_lists(lambda { |x| x['name'] },
                   method(:merge_workspace),
                   as,
