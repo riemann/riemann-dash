@@ -37,13 +37,13 @@ describe "Riemann::Dash::BrowserConfig" do
       it "prioritises the value from the first config" do
         merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
 
-        assert_equal 'first_server', merged_configs['server']
+        assert_equal @first_config['server'], merged_configs['server']
       end
 
       it "uses the value from the second config if no other exists" do
         merged_configs = Riemann::Dash::BrowserConfig.merge_configs({}, @second_config)
 
-        assert_equal 'second_server', merged_configs['server']
+        assert_equal @second_config['server'], merged_configs['server']
       end
     end
 
@@ -51,13 +51,13 @@ describe "Riemann::Dash::BrowserConfig" do
       it "prioritises the value from the first config" do
         merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
 
-        assert_equal 'first_type', merged_configs['server_type']
+        assert_equal @first_config['server_type'], merged_configs['server_type']
       end
 
       it "uses the value from the second config if no other exists" do
         merged_configs = Riemann::Dash::BrowserConfig.merge_configs({}, @second_config)
 
-        assert_equal 'second_type', merged_configs['server_type']
+        assert_equal @second_config['server_type'], merged_configs['server_type']
       end
     end
   end
