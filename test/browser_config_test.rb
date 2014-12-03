@@ -41,9 +41,7 @@ describe "Riemann::Dash::BrowserConfig" do
       end
 
       it "uses the value from the second config if no other exists" do
-        @first_config = {}
-
-        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs({}, @second_config)
 
         assert_equal 'second_server', merged_configs['server']
       end
@@ -57,9 +55,7 @@ describe "Riemann::Dash::BrowserConfig" do
       end
 
       it "uses the value from the second config if no other exists" do
-        @first_config = {}
-
-        merged_configs = Riemann::Dash::BrowserConfig.merge_configs(@first_config, @second_config)
+        merged_configs = Riemann::Dash::BrowserConfig.merge_configs({}, @second_config)
 
         assert_equal 'second_type', merged_configs['server_type']
       end
