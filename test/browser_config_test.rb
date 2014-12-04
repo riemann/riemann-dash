@@ -78,4 +78,21 @@ describe "Riemann::Dash::BrowserConfig" do
 
   end
 
+  describe :merge_workspace do
+    before do
+      @first_ws = {"view" => {"version" => 2}}
+      @second_ws = {"view" => {"version" => 3}}
+    end
+
+    it "prioritises the workspace with the higher version" do
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(@first_ws, @second_ws)
+      assert_equal @second_ws, merged_workspace
+
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(@second_ws, @first_ws)
+      assert_equal @second_ws, merged_workspace
+    end
+
+  end
+
+
 end
