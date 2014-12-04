@@ -1,4 +1,5 @@
 require './test/test_helper'
+require 'pp'
 
 describe "Riemann::Dash::BrowserConfig" do
 
@@ -61,4 +62,20 @@ describe "Riemann::Dash::BrowserConfig" do
       end
     end
   end
+
+  describe :index_by do
+    before do
+      @list = [{'name' => 'a'}, {'name' => 'b'}, {'name' => 'c'}]
+    end
+
+    it "returns the list of key/value pairs as a map indexed by the specified key/value" do
+      indexed_config = Riemann::Dash::BrowserConfig.index_by(lambda { |x| x['name'] }, @list)
+
+      assert_equal({'name' => 'a'}, indexed_config['a'])
+      assert_equal({'name' => 'b'}, indexed_config['b'])
+      assert_equal({'name' => 'c'}, indexed_config['c'])
+    end
+
+  end
+
 end

@@ -25,8 +25,6 @@ module Riemann::Dash::BrowserConfig
     backend.update(update)
   end
 
-  private
-
   # TODO: this is gonna take significant restructuring of the dashboard itself,
   # but we should move to http://arxiv.org/abs/1201.1784 or equivalent CRDTs.
 
