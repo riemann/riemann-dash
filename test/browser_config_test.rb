@@ -80,8 +80,8 @@ describe "Riemann::Dash::BrowserConfig" do
 
   describe :merge_workspace do
     before do
-      @first_ws = {"view" => {"version" => 2}}
-      @second_ws = {"view" => {"version" => 3}}
+      @first_ws = {"view" => {"version" => 2}, "name" => "first"}
+      @second_ws = {"view" => {"version" => 3}, "name" => "second"}
     end
 
     it "prioritises the workspace with the higher version" do
@@ -92,6 +92,28 @@ describe "Riemann::Dash::BrowserConfig" do
       assert_equal @second_ws, merged_workspace
     end
 
+    it "prioritises any workspace over a nil workspace" do
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(@first_ws, nil)
+      assert_equal @first_ws, merged_workspace
+
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(nil, @first_ws)
+      assert_equal @first_ws, merged_workspace
+    end
+
+    it "prioritises any workspace with a version over a workspace without a version" do
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(@first_ws, {"view" => {}})
+      assert_equal @first_ws, merged_workspace
+
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace({"view" => {}}, @first_ws)
+      assert_equal @first_ws, merged_workspace
+    end
+
+    it "prioritises the first workspace if both versions are equal" do
+      @second_ws['view']['version'] = @first_ws['view']['version']
+      merged_workspace = Riemann::Dash::BrowserConfig.merge_workspace(@first_ws, @second_ws)
+      assert_equal @first_ws, merged_workspace
+
+    end  
   end
 
 
