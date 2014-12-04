@@ -1,5 +1,3 @@
-require 'pp'
-
 module Riemann::Dash::BrowserConfig
 
   def self.backend
@@ -64,8 +62,6 @@ module Riemann::Dash::BrowserConfig
       return as unless bs
       return bs unless as
 
-      pp as
-      pp bs
       merge_lists(lambda { |x| x['name'] },
                   method(:merge_workspace),
                   as,
