@@ -31,6 +31,11 @@ set :bind, "1.2.3.4" # Bind to a different interface
 config[:ws_config] = 'custom/config.json' # Specify custom workspace config
 ```
 
+You can also specify the default config file to be used by setting the
+`RIEMANN_DASH_CONFIG` environment variable. If set, this value will override
+the default config file location of `config.rb` when no config file is passed
+on the command line.
+
 Putting in production
 =====================
 

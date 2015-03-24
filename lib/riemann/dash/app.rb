@@ -17,7 +17,7 @@ module Riemann
       end
 
       def self.load(filename)
-        filename ||= 'config.rb'
+        filename ||= ENV['RIEMANN_DASH_CONFIG'] || 'config.rb'
         unless config.load_config(filename)
           # Configuration failed; load a default view.
           puts "No configuration loaded; using defaults."
