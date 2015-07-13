@@ -57,6 +57,7 @@
   <script src="views/gauge.js"></script>
   <script src="views/dial.js"></script>
   <script src="views/grid.js"></script>
+  <script src="views/iframe.js"></script>
   <script src="dash.js"></script>
 
   <script>dash.reload()</script>
