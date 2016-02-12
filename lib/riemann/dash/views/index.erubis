@@ -5,6 +5,8 @@
   <title>riemann</title>
   <link rel="stylesheet" type="text/css" href="vendor/toastr/toastr.css" />
   <link rel="stylesheet" type="text/css" href="css" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div id="toolbar"></div>
