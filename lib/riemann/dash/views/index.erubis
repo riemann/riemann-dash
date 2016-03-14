@@ -27,6 +27,7 @@
   <script src="vendor/flot/jquery.flot.canvas.min.js"></script>
   <script src="vendor/flot/jquery.flot.time.min.js"></script>
   <script src="vendor/flot/jquery.flot.stack.min.js"></script>
+  <script src="vendor/flot/jquery.flot.tooltip.min.js"></script>
   <script src="vendor/PriorityQueue.js"></script>
   <script src="vendor/gauge.min.js"></script>
   <script src="vendor/jquery.gauge.js"></script>
