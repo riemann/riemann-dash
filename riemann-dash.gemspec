@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['aphyr@aphyr.com']
   gem.description   = %q{HTTP dashboard for the distributed event system Riemann.}
   gem.summary       = gem.description
-  gem.homepage      = 'https://github.com/aphyr/riemann-dash'
+  gem.homepage      = 'https://github.com/riemann/riemann-dash'
   gem.platform      = Gem::Platform::RUBY
 
   gem.add_dependency 'erubis', '>= 2.7.0'

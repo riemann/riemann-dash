@@ -56,7 +56,7 @@ example rackup app is found in "example/config.ru".
 Development
 ===========
 
-    $ git clone git://github.com/aphyr/riemann-dash.git
+    $ git clone git://github.com/riemann/riemann-dash.git
     $ cd riemann-dash
     $ bundle
 
