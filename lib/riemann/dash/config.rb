@@ -39,12 +39,15 @@ class Riemann::Dash::Config
     store[k] = v
   end
 
+  alias_method :set, :"[]="
 
   # Executes the configuration file.
   def load_config(path)
     self.config_path = path
     begin
-      Riemann::Dash::App.instance_eval File.read(config_path)
+      opts = File.read(config_path)
+      self.instance_eval opts
+      Riemann::Dash::App.instance_eval opts
       true
     rescue Errno::ENOENT
       false
