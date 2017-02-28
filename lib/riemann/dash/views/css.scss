@@ -1,19 +1,21 @@
 /* Colors! */
-$bright-green: #2CFE40;
-$dark-green: #059F00;
-$fuschia: #FD47B7;
-$purple: #7C2CFF;
-$orange: #FF6513;
-$amber: #FFC712;
-$light-blue: #2CCCFE;
-$blue: #2C55FF;
-$dark-grey: #1F1F1F;
-$grey: #888;
-$light-grey: #ccc;
-$off-white: #dedede;
+$bright-green: #859900;
+$dark-green: #859900;
+$fuschia: #d33682;
+$purple: #6C71C4;
+$orange: #CB4B16;
+$amber: #B58900;
+$light-blue: #2AA198;
+$blue: #268BD2;
+$dark-grey: #002B36;
+$grey: #657B83;
+$light-grey: #EEE8D5;
+$off-white: #073642;
 $cream: #f6f6f6;
-$green: #06FA23;
+$green: #859900;
 $yellow: #FEF206;
+
+$background: #002B36;
 
 @mixin vendor-prefix($name, $argument) {
   #{$name}: $argument;
@@ -33,8 +35,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #fff;
-  color: $dark-grey;
+  background: $background;
+  color: $grey;
 }
 
 html,table {
@@ -54,6 +56,7 @@ html,table {
   font-size: 12px;
  
   input {
+    color: $grey;
     background: $off-white;
     border: 1px solid $dark-grey;
     margin: 3px;
