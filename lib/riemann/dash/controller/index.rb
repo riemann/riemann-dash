@@ -1,6 +1,6 @@
 class Riemann::Dash::App
   get '/' do
-    erb :index, :layout => false
+    erubis :index, :layout => false
   end
 
   get '/config', :provides => 'json' do
