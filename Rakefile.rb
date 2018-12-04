@@ -5,7 +5,7 @@ require 'github_changelog_generator/task'
 
 GitHubChangelogGenerator::RakeTask.new :changelog do |config|
     config.since_tag = '0.1.14'
-      config.future_release = '0.2.0'
+    config.future_release = '0.2.0'
 end
 
 task :default => :test
