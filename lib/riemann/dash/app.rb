@@ -5,6 +5,7 @@ module Riemann
 
       require 'yaml'
       require 'find'
+      require 'tilt/erubis'
       require 'erubis'
       require 'sass'
 
