@@ -1,5 +1,3 @@
-#$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
-#require 'rubygems'
 require "bundler/gem_tasks"
 require 'github_changelog_generator/task'
 
