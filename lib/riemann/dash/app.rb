@@ -5,8 +5,8 @@ module Riemann
 
       require 'yaml'
       require 'find'
-      require 'tilt/erubis'
-      require 'erubis'
+      require 'tilt/erubi'
+      require 'erubi'
       require 'sass'
 
       def self.config
