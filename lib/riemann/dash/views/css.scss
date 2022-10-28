@@ -167,7 +167,12 @@ html,table {
 
   .tags:before {
     color: $grey;
-    content: "tags: ";
+    content: "tags ";
+  }
+
+  .field-name {
+    color: $grey;
+    text-align: right;
   }
 
   .description {
