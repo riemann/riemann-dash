@@ -147,7 +147,6 @@ html,table {
   }
 
   * {
-    float: left;
     padding: 3px;
   }
 
@@ -172,6 +171,7 @@ html,table {
   }
 
   .description {
+    float: left;
     clear: both;
     white-space: pre-wrap;
   }
