@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.platform      = Gem::Platform::RUBY
 
   gem.add_runtime_dependency 'erubi', '~> 1.9.0'
-  gem.add_runtime_dependency 'sinatra', '>= 1.4.5', '< 2.3.0'
+  gem.add_runtime_dependency 'sinatra', '>= 1.4.5', '< 3.1.0'
   gem.add_runtime_dependency 'sass', '>= 3.1.14'
   gem.add_runtime_dependency 'webrick'
   gem.add_runtime_dependency 'multi_json', '1.3.6'
