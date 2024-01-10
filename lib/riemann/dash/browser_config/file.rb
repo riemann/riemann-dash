@@ -7,7 +7,7 @@ class Riemann::Dash::BrowserConfig::File
   end
 
   def read
-    if ::File.exists? @path
+    if ::File.exist? @path
       ::File.open(@path, 'r') do |f|
         f.flock ::File::LOCK_SH
         f.read
