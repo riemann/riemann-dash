@@ -147,7 +147,6 @@ html,table {
   }
 
   * {
-    float: left;
     padding: 3px;
   }
 
@@ -168,12 +167,19 @@ html,table {
 
   .tags:before {
     color: $grey;
-    content: "tags: ";
+    content: "tags ";
+  }
+
+  .field-name {
+    color: $grey;
+    text-align: right;
   }
 
   .description {
+    float: left;
     clear: both;
     white-space: pre-wrap;
+    margin: 3px;
   }
 }
 
