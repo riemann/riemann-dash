@@ -105,7 +105,7 @@ GEM
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
     public_suffix (6.0.0)
-    rack (2.2.9)
+    rack (2.2.12)
     rack-protection (2.2.4)
       rack
     rainbow (3.1.1)
