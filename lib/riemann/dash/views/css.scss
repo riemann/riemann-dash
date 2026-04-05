@@ -441,6 +441,7 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
+    overflow: auto;
   }
 
   .bar {
@@ -468,6 +469,7 @@ h2 {
     
     th {
       text-align: right;
+      background-color: #fff;
     }
 
     thead {
@@ -475,11 +477,28 @@ h2 {
       padding: 0;
 
       th {
-        // Work around https://bugs.webkit.org/show_bug.cgi?id=20040
-        position: relative;
-        top: 3px;
         vertical-align: bottom;
         text-align: left;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        &:first-child {
+	  left: 0;
+	  z-index: 2;
+        }
+      }
+    }
+
+    tbody {
+      tr:hover, tr:hover th {
+        background-color: $cream;
+      }
+
+      th {
+        position: sticky;
+	left: 0;
+	z-index: 1;
       }
     }
   }
